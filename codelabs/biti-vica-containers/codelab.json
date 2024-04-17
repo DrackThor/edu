@@ -1,0 +1,28 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-04-17T05:06:16Z",
+  "id": "biti-vica-containers",
+  "duration": 0,
+  "title": "BITI VICA - Containers",
+  "authors": "Daniel Drack",
+  "summary": "BITI VICA - Containers",
+  "source": "biti-vica-containers.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "linux",
+    "virtualization",
+    "containers"
+  ],
+  "tags": [
+    "biti",
+    "containers",
+    "vica"
+  ],
+  "url": "biti-vica-containers"
+}
