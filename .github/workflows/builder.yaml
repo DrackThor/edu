@@ -45,9 +45,9 @@ jobs:
       - name: Build Site
         run: |
           npm install
-          gulp dist 
+          gulp dist
           rm -f ./dist/codelabs
-          cp -r ./codelabs ./dist/ 
+          cp -r ./codelabs ./dist/
         working-directory: ./site
 
       - name: Deploy 🚀

@@ -135,6 +135,16 @@ gulp.task('build:css', () => {
     .pipe(gulp.dest('build'));
 });
 
+// build:cname copies CNAME into the dist dir
+gulp.task('build:cname', () => {
+  const srcs = [
+    'CNAME',
+  ];
+
+  return gulp.src(srcs, { base: 'app/' })
+    .pipe(gulp.dest('build'));
+});
+
 // build:html builds all the HTML files
 gulp.task('build:html', () => {
   const streams = [];
@@ -238,6 +248,7 @@ gulp.task('build', gulp.series(
   'build:js',
   'build:elements_js',
   'build:vulcanize',
+  'build:cname',
 ));
 
 // copy copies the built artifacts in build into dist/
