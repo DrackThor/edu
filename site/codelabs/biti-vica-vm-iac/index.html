@@ -1,0 +1,245 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>BITI VICA - Virtual Machines and IaC</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="biti-vica-vm-iac"
+                  title="BITI VICA - Virtual Machines and IaC"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Before We Begin" duration="0">
+        <p>Welcome to Virtual Machines and IaC :-)</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>Basics of Virtual Machines and IaC</li>
+<li>Basics of ExoScale</li>
+</ul>
+<h2 is-upgraded>What You&#39;ll Need</h2>
+<ul>
+<li>a notebook</li>
+<li>access to the internet</li>
+<li><code>terraform</code> installed locally</li>
+<li>Exoscale access</li>
+<li>a thirst for knowledge, a clear mind and an insatiable urge to learn</li>
+</ul>
+<h2 is-upgraded>Further Reading</h2>
+<ul>
+<li><a href="https://kodekloud.com/" target="_blank">KodeKloud</a></li>
+<li><a href="https://community.exoscale.com/" target="_blank">Exoscale Docs</a></li>
+<li><a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank">HasciCorp Tutorials</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Infrastructure-as-Code: Basics" duration="0">
+        <aside class="warning"><p> Let&#39;s provision a virtual machine in the cloud, manually! :D </p>
+</aside>
+<ul>
+<li>access <a href="https://portal.exoscale.com/" target="_blank">https://portal.exoscale.com/</a></li>
+<li>&#34;Compute&#34; -&gt; &#34;Instances&#34; -&gt; &#34;ADD&#34;</li>
+<li>provide a name</li>
+<li>select the <code>template</code>: &#34;Linux Ubuntu 22.04 LTS 64-bit&#34;</li>
+<li>select <code>zone</code>: &#34;AT-VIE-1&#34;</li>
+<li>select <code>instance type</code>: &#34;Standard - Small&#34;</li>
+<li>select <code>disk size</code>: &#34;50GB&#34;</li>
+<li>&#34;ADD&#34;</li>
+<li>&#34;Compute&#34; -&gt; &#34;Security Groups&#34; -&gt; &#34;ADD&#34;</li>
+<li><code>name</code>: &#34;public&#34;</li>
+<li>&#34;ADD&#34;</li>
+<li>&#34;Compute&#34; -&gt; &#34;Security Groups&#34; -&gt; &#34;public&#34;</li>
+<li>&#34;ADD RULE&#34; -&gt; &#34;SSH&#34;</li>
+<li>&#34;Instances&#34; (Tab) -&gt; &#34;ATTACH&#34; -&gt; &#34;&#34;</li>
+</ul>
+<aside class="warning"><p> Now let&#39;s reset the password and access the machine via SSH. <br> Recap: What do we see under the hood? </p>
+</aside>
+<pre><code language="language-shell" class="language-shell"># show me all attached block devices
+lsblk
+
+# show me all filesystems
+df -h
+
+# show me all network interfaces
+ip a
+
+# are we a VM?
+systemd-detect-virt
+dmesg | grep -i kvm
+lscpu
+# Virtualization features:
+#   Virtualization:        VT-x
+#   Hypervisor vendor:     KVM
+#   Virtualization type:   full
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Why IaC?" duration="0">
+        <ul>
+<li>What&#39;s the issue with &#34;UI&#34; clicking?</li>
+<li>What&#39;s so cool about Code? <ul>
+<li>Idempotecy</li>
+<li>Versioning</li>
+<li>Distribution</li>
+<li>Desired State</li>
+<li>Reproducability</li>
+<li>Time</li>
+<li>CRUD</li>
+</ul>
+</li>
+</ul>
+<p>Prerequisites:</p>
+<ul>
+<li>API! Examples?</li>
+<li>Tooling</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Exoscale API" duration="0">
+        <aside class="warning"><p> Now, let&#39;s we do the same thing as before, but as code! :D </p>
+</aside>
+<ul>
+<li>first we need to create a proper role<ul>
+<li>&#34;IAM&#34; -&gt; &#34;ROLES&#34; -&gt; &#34;ADD&#34;</li>
+<li><code>name</code>: demo</li>
+<li>&#34;ADD SERVICE CLASS&#34;: <code>compute</code></li>
+<li>&#34;CREATE&#34;</li>
+</ul>
+</li>
+<li>then we need to create an API key pair<ul>
+<li>&#34;IAM&#34; -&gt; &#34;KEYS&#34; -&gt; &#34;ADD&#34;</li>
+<li><code>name</code>: demo</li>
+<li><code>Role</code>: demo</li>
+</ul>
+</li>
+<li>create a new folder on your local machine</li>
+<li>create the follwing files in that folder</li>
+</ul>
+<pre><code language="language-hcl" class="language-hcl"># terraform.tf
+terraform {
+  required_providers {
+    exoscale = {
+      source = &#34;exoscale/exoscale&#34;
+    }
+  }
+}
+
+provider &#34;exoscale&#34; {
+  key      = &#34;EXO9a94805185b8e58bd27d0227&#34;
+  secret   = &#34;lAkUIGH_LbGNCuOYbe2Rl840CV9xUGXOlDp2dJngJTU&#34;
+}
+</code></pre>
+<pre><code language="language-hcl" class="language-hcl"># sg.tf
+resource &#34;exoscale_security_group&#34; &#34;sg_ssh_only&#34; {
+  name = &#34;ssh-only&#34;
+}
+
+resource &#34;exoscale_security_group_rule&#34; &#34;sg_rule_ssh_ingress&#34; {
+  security_group_id = exoscale_security_group.sg_ssh_only.id
+  type              = &#34;INGRESS&#34;
+  protocol          = &#34;TCP&#34;
+  cidr              = &#34;0.0.0.0/0&#34; # &#34;::/0&#34; for IPv6
+  description       = &#34;Allow SSH access from anywhere&#34;
+  start_port        = 22
+  end_port          = 22
+}
+</code></pre>
+<pre><code language="language-hcl" class="language-hcl"># vm.tf
+data &#34;exoscale_template&#34; &#34;linux_22_vie&#34; {
+  zone = &#34;at-vie-1&#34;
+  name = &#34;Linux Ubuntu 22.04 LTS 64-bit&#34;
+}
+
+resource &#34;exoscale_compute_instance&#34; &#34;vm&#34; {
+  zone = &#34;at-vie-1&#34;
+  name = &#34;demo-2&#34;
+
+  template_id        = data.exoscale_template.linux_22_vie.id
+  type               = &#34;standard.small&#34;
+  disk_size          = 50
+  security_group_ids = [exoscale_security_group.sg_ssh_only.id]
+}
+</code></pre>
+<pre><code language="language-shell" class="language-shell">terraform init
+terraform plan
+# let&#39;s discuss the output a little
+terraform apply
+terraform destroy
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Discussion" duration="0">
+        <ul>
+<li>Security aspects of IaC and VMs <ul>
+<li>governance, policies, cost management</li>
+<li>RBAC</li>
+</ul>
+</li>
+<li>GDPR and legal stuff</li>
+<li>building virtual cloud infrastructure with code</li>
+<li>running VMs in an enterprise environment <ul>
+<li>introduction to HCI</li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Assignment #2 Topics" duration="0">
+        <p>One one-pager per term should be created from the following topics and presented in the next classroom session (max. 5 min).</p>
+<p>Format: AsciiDoc or Markdown. Upload as zip file incl. any additional files (images etc.)</p>
+<ul>
+<li>IaC - Overview</li>
+<li>Terraform</li>
+<li>IaaS/PaaS/SaaS</li>
+<li>RBAC</li>
+<li>Cloud Init</li>
+<li>Governance and Policies</li>
+<li>Virtual Machines</li>
+<li>HCI - Hyperconverged Infrastructure</li>
+<li>GDPR - a brief overview</li>
+<li>Benefits and examples of doing things as Code</li>
+<li>Selected Security Buzzwords of the Cloud</li>
+<li>What does &#34;Cloud Native&#34; mean?</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

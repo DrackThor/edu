@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-11-13T11:45:31+01:00",
+  "id": "edit-this-codelabs",
+  "duration": 1,
+  "title": "Creating/changing this codelabs",
+  "authors": "Thomas Schuetz",
+  "summary": "How to create/edit codelabs",
+  "source": "edit-this-codelabs.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab"
+  ],
+  "tags": [
+    "general",
+    "introduction"
+  ],
+  "url": "edit-this-codelabs"
+}

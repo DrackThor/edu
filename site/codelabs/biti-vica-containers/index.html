@@ -1,0 +1,115 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>BITI VICA - Containers</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="biti-vica-containers"
+                  title="BITI VICA - Containers"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Before We Begin" duration="0">
+        <p>Welcome to Containers :-)</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>Basics of Containers</li>
+</ul>
+<h2 is-upgraded>What You&#39;ll Need</h2>
+<ul>
+<li>a notebook</li>
+<li>access to the internet</li>
+<li>a thirst for knowledge, a clear mind and an insatiable urge to learn</li>
+</ul>
+<h2 is-upgraded>Further Reading</h2>
+<ul>
+<li><a href="https://kodekloud.com/" target="_blank">KodeKloud</a></li>
+<li><a href="https://training.linuxfoundation.org/training/introduction-to-cloud-infrastructure-technologies/" target="_blank">Linux Foundation LFS151x</a></li>
+</ul>
+<p>Let&#39;s create a markdown file with a simple Docker demo for serving a static website using Nginx.</p>
+<p>tutorial_content = &#34;&#34;&#34;</p>
+<p>Docker Demo: Serving a Static Website with Nginx</p>
+<p>This tutorial guides you through the process of containerizing and serving a static website using Nginx inside a Docker container. We&#39;ll start by creating a simple, nice-looking demo page, then we&#39;ll build a Docker image that serves this page using Nginx.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prerequisites" duration="0">
+        <ul>
+<li>Docker installed on your machine. If you haven&#39;t installed Docker yet, follow the installation instructions for your platform on the <a href="https://docs.docker.com/get-docker/" target="_blank">Docker official website</a>.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step 1: Create a Demo Web Page" duration="0">
+        <p>First, create a directory for your project and navigate into it:</p>
+<pre><code language="language-bash" class="language-bash">mkdir nginx-static-site
+cd nginx-static-site
+</code></pre>
+<pre><code language="language-html" class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Welcome to My Static Site&lt;/title&gt;
+    &lt;style&gt;
+      body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        h1 { color: #333366; }
+        p { color: #666; font-size: 1.2em; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Welcome to My Static Site&lt;/h1&gt;
+    &lt;p&gt;This is a simple static website served by Nginx inside a Docker container.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code language="language-dockerfile" class="language-dockerfile"># Use the Nginx image from Docker Hub as the base image
+FROM nginx:alpine
+
+# Copy the static website files to the Nginx server
+COPY index.html /usr/share/nginx/html/index.html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx when the container launches
+CMD [&#34;nginx&#34;, &#34;-g&#34;, &#34;daemon off;&#34;]
+</code></pre>
+<pre><code language="language-bash" class="language-bash">docker build -t yourname/nginx-static-site .
+docker run -d -p 8080
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

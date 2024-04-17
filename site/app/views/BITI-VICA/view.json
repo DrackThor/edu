@@ -1,0 +1,9 @@
+{
+  "title": "BITI - Virtualisierung & Cloud-Technologien",
+  "description": "Come and learn about virtualization and cloud technologies",
+  "tags": ["vica"],
+  "exclude": [
+    ".*-about$",
+    "^lang-.*"
+  ]
+}

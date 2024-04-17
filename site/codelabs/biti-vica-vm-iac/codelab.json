@@ -1,0 +1,28 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-04-17T06:47:19+02:00",
+  "id": "biti-vica-vm-iac",
+  "duration": 0,
+  "title": "BITI VICA - Virtual Machines and IaC",
+  "authors": "Daniel Drack",
+  "summary": "BITI VICA - Virtual Machines and IaC",
+  "source": "codelabs/biti-vica-vm-iac.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "linux",
+    "virtualization",
+    "iac"
+  ],
+  "tags": [
+    "biti",
+    "iac",
+    "vica"
+  ],
+  "url": "biti-vica-vm-iac"
+}

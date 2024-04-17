@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-04-17T06:47:19+02:00",
+  "id": "biti-vica-virtualization",
+  "duration": 0,
+  "title": "BITI VICA - Virtualization Basics",
+  "authors": "Daniel Drack",
+  "summary": "BITI VICA - Virtualization Basics",
+  "source": "codelabs/biti-vica-virtualization.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "linux",
+    "virtualization"
+  ],
+  "tags": [
+    "biti",
+    "vica"
+  ],
+  "url": "biti-vica-virtualization"
+}
