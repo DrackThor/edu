@@ -39,7 +39,7 @@
 <ul>
 <li>a notebook</li>
 <li>access to the internet</li>
-<li><code>terraform</code> installed locally</li>
+<li><code>terraform</code> installed locally<a href="..%2F..%2F..%2F..%2F..%2FDownloads%2FPerformance%20Impact%20Virtualization.md" target="_blank">Performance Impact Virtualization.md</a></li>
 <li>Exoscale access</li>
 <li>a thirst for knowledge, a clear mind and an insatiable urge to learn</li>
 </ul>
@@ -49,6 +49,424 @@
 <li><a href="https://community.exoscale.com/" target="_blank">Exoscale Docs</a></li>
 <li><a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank">HasciCorp Tutorials</a></li>
 </ul>
+<p>TODO KCNA, CNCF Academic</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[1/12] Performance Impact von Virtualisierung [Sieber]" duration="0">
+        <p><strong>Einführung:</strong> Virtualisierung ermöglicht die Ausführung mehrerer Betriebssysteme und Anwendungen auf einem einzelnen physischen Server durch die Virtualisierung von Hardware-Ressourcen. Diese Technologie beeinflusst die Systemleistung in vielfältiger Weise und erfordert eine sorgfältige Handhabung, um ihre Vorteile vollständig nutzen zu können.</p>
+<p><strong>Verständnis der Virtualisierung:</strong></p>
+<ul>
+<li><strong>Hypervisoren:</strong> Software, die virtuelle Maschinen (VMs) erstellt und verwaltet und als Plattform zur Virtualisierung der Hardware dient.</li>
+<li><strong>Arten der Virtualisierung:</strong> Server-, Netzwerk- und Speichervirtualisierung, die jeweils unterschiedliche Auswirkungen auf die Leistung haben.</li>
+</ul>
+<p><strong>Leistungsauswirkungen:</strong></p>
+<ol type="1">
+<li><strong>CPU-Leistung:</strong><ul>
+<li><strong>Overhead:</strong> Hypervisoren verbrauchen CPU-Ressourcen, was einen Overhead erzeugt, der in nicht-virtualisierten Umgebungen nicht vorhanden ist.</li>
+<li><strong>Ressourcenkonkurrenz:</strong> Mehrere VMs, die um CPU-Zyklen konkurrieren, können zu Leistungseinbußen führen, sofern dies nicht angemessen verwaltet wird.</li>
+</ul>
+</li>
+<li><strong>Speichernutzung:</strong><ul>
+<li><strong>Zuweisungsgrenzen:</strong> Jeder VM wird eine feste Menge an RAM zugewiesen, die, wenn überschritten, zu Swapping und erheblich langsamerer Leistung führt.</li>
+<li><strong>Balloon-Treiber:</strong> Hypervisoren verwenden Balloon-Treiber, um ungenutzten Speicher von VMs zurückzugewinnen, was Leistungsprobleme verursachen kann, wenn es nicht korrekt konfiguriert ist.</li>
+</ul>
+</li>
+<li><strong>Disk I/O:</strong><ul>
+<li><strong>Speichervirtualisierung:</strong> Führt zusätzliche Abstraktionsebenen ein, erhöht potenziell die Latenz und verringert den I/O-Durchsatz.</li>
+<li><strong>Geteilte Ressourcen:</strong> VMs, die denselben physischen Speicher teilen, können insbesondere während Spitzenlasten I/O-Engpässe erleiden.</li>
+</ul>
+</li>
+<li><strong>Netzwerkdurchsatz:</strong><ul>
+<li><strong>Virtuelle Switches:</strong> Der Netzwerkverkehr zwischen VMs auf demselben Host wird durch virtuelle Switches geleitet, was zusätzliche Latenz verursachen und den Durchsatz im Vergleich zu physischen Netzwerkswitches reduzieren kann.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Techniken zur Leistungssteigerung:</strong></p>
+<ul>
+<li><strong>Angemessene Ressourcenzuweisung:</strong> Zuweisung ausreichender CPU-, Speicher- und I/O-Ressourcen basierend auf den Leistungsanforderungen jeder VM.</li>
+<li><strong>Erweiterte Hypervisor-Funktionen:</strong> Funktionen wie CPU-Pinning und I/O-Passthrough können helfen, den Virtualisierungs-Overhead zu minimieren und die Leistung zu verbessern.</li>
+<li><strong>Dynamische Ressourcenplanung:</strong> Systeme wie VMwares DRS oder Microsofts Dynamic Memory helfen, die Ressourcenzuweisung in Echtzeit zu verwalten, um die Leistung zu optimieren.</li>
+</ul>
+<p><strong>Herausforderungen bei der Virtualisierung:</strong></p>
+<ul>
+<li><strong>Überwachung und Verwaltung:</strong> Erfordert anspruchsvolle Werkzeuge zur Leistungsüberwachung und effizienten Ressourcenverwaltung.</li>
+<li><strong>Komplexität:</strong> Erhöhte Komplexität bei der Fehlerbehebung und der Aufrechterhaltung der Leistung über mehrere VMs und unterschiedliche Workloads hinweg.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[2/12] NAS [Scheifinger]" duration="0">
+        <p>aliases:</p>
+<ul>
+<li>Network Attached Storage</li>
+<li>NAS tags:</li>
+<li>FH/4/VICA/Virtualisierung</li>
+</ul>
+<h2 is-upgraded>Definition: Was ist ein NAS</h2>
+<p>Ein NAS (Network Attached Storage) Device ist ein Gerät, welches dazu ausgelegt ist, Daten zu speichern. Das Ziel eines NAS ist es, eine zentrale, netzwerkbasierte Speicherlösung bereitzustellen, auf die mehrere Benutzer gleichzeitig zugreifen können.</p>
+<h2 is-upgraded>Technische Aspekte</h2>
+<h3 is-upgraded>Hardware</h3>
+<p>Ein NAS besteht typischerweise aus mehreren Festplatten die zu einem Raid (RAID1, RAID5) zusammengeschalten werden. Dies ist wichtig, damit die Datensicherheit und Redundanz gegeben ist. Es gibt auch NAS Lösungen, bei denen nur eine Festplatte zum Einsatz kommt, dies vermindert jedoch einige Vorteile einer normalen NAS wie zum Beispiel die Spiegelung der Daten über mehrere Festplatten.</p>
+<h3 is-upgraded>Software</h3>
+<p>Die Software auf einem NAS darf auch nicht vernachlässigt werden. Diese ist dazu da, Speicherressourcen, Netzwerkdienste und Zugriffskontrollen zu verwalten. Normalerweise unterstützt es auch eine Vielzahl von Protokollen für Dateizugriffe, darunter SMB/CIFS, NFS und manchmal auch AFP.</p>
+<h2 is-upgraded>Funktionsweise</h2>
+<ul>
+<li>Dateifreigabe Eines der Hauptzwecke ist die Dateifreigabe im Netzwerk. Dies erleichtert die Zusammenarbeit in Teams, dadurch die Daten an denen gearbeitet wird an einem zentralen Punkt gespeichert werden. <ul>
+<li>Beispiel: Büro Mitarbeiter können ihre Arbeitsdokumente auf einem NAS speichern. Dies ermöglicht es allen Beteiligten, von jedem Bürorechner aus auf die neuesten Versionen von den Dateien zuzugreifen.</li>
+</ul>
+</li>
+<li>Multimedia-Server Viele Geräte haben einen integrierte Funktion, um Videos, Fotos und Audiodateien im Netzwerk zu streamen. <ul>
+<li>Beispiel: Zuhause Alle Familienmitglieder können auf eine gemeinsame Fotobibliothek für Familienfotos zugreifen</li>
+</ul>
+</li>
+<li>Datensicherung Es besteht die Möglichkeit ein NAS als Backup-Ziel zu verwenden. Dort können Geräte automatisiert ihre Backups zum Beispiel Täglich um Mitternacht machen, ohne andere Geräte zu stören.</li>
+</ul>
+<h2 is-upgraded>Vorteile / Nachteile</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>PRO</p>
+</td><td colspan="1" rowspan="1"><p>CON</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Einfacher Zugriff und gemeinsame Nutzung</p>
+</td><td colspan="1" rowspan="1"><p>Stromverbrauch</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Zentralisierte Datensicherung</p>
+</td><td colspan="1" rowspan="1"><p>Abhängigkeit von der Netzwerkinfrastruktur</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Skalierbarkeit</p>
+</td><td colspan="1" rowspan="1"><p>Kosten für Erweiterung</p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"><p>Kosteneffizienz</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[3/12] Buzzwords [Raab]" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"><p>Begriff</p>
+</td><td colspan="1" rowspan="1"><p>Definition</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SAN (Storage Area Network)</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Ein dediziertes Hochgeschwindigkeitsnetzwerk, das den Zugriff auf Speicher von mehreren Servern aus ermöglicht.</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>NAS (Network Attached Storage)</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Ein Dateispeichersystem, das über ein Netzwerk angeschlossen ist und   Dateizugriffsdienste für andere Geräte bereitstellt.</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Type 1 Hypervisor</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Ein Hypervisor, der direkt auf der Hardware läuft, hostet virtuelle Maschinen ohne zugrunde-liegendes Betriebssystem, zB: VMWare, Hyper-V</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Type 2 Hypervisor</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Ein Hypervisor, der auf einem Betriebssystem installiert ist, führt virtuelle Maschinen als normale Anwendungen aus, zB: Oracle VirtualBox</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>VLAN (Virtual Local Area Network)</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Ein logisches Netzwerk, das Geräte in physisch getrennten Netzwerken miteinander verbindet, indem es die Ressourcen eines einzelnen physischen Netzwerks in mehrere virtuelle Netzwerke aufteilt.</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>VXLAN (Virtual Extensible LAN)</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Ein Overlay-Netzwerkprotokoll, das Layer-2-Verbindungen über Layer-3-Netzwerke ermöglicht, um virtuelle Maschinen über Rechenzentren hinweg zu verbinden.</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>SDN (Software-Defined Networking)</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Ein Netzwerkarchitekturansatz, bei dem die Steuerungsebene vom Datenverkehr getrennt ist und über eine zentrale Softwaresteuerung erfolgt.</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>OS Virtualization</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Die Virtualisierung eines Betriebssystems, das es ermöglicht, mehrere Instanzen desselben Betriebssystems auf einem einzelnen Host auszuführen, zB: Docker</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Performance Impact with Virtualization</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Die Auswirkungen der Virtualisierung auf die Leistung von Anwendungen und Systemen, einschließlich Overhead und Ressourcenverwaltung, zB: Hyper-V ist in Windows Server integriert, was wiederum Leistungsverbesserungen bietet.</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Problems and Limitations of Virtualization</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Herausforderungen und Einschränkungen bei der Implementierung und Nutzung von Virtualisierungstechnologien. Red Hat Enterprise Virtualization unterstützt Unternehmen dabei etwaige Herausforderungen bzgl Implementierung und Verwaltung virtualisierter Umgebungen zu bewältigen.</em></p>
+</td></tr>
+<tr><td colspan="2" rowspan="1"></td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>History of Virtualization</strong></p>
+</td><td colspan="1" rowspan="1"><p><em>Die Entwicklung und Evolution von Virtualisierungstechnologien seit ihren Anfängen bis zur heutigen Verbreitung.<br></em>     * - begann in den 60er-Jahren mit IBM*<br>      *- Gründung von VMWare 1990*<br>     * - Corona Pandemie 2020*</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[4/12]  OS Virtualisierung [Guttmann]" duration="0">
+        <h2 is-upgraded>Was ist OS Virtualisierung?</h2>
+<p>OS Virtualisierung bezieht sich auf die Technik, bei der auf einem einzelnen physischen Host mehrere virtuelle Instanzen bereitgestellt werden können. Jede dieser virtuelle Maschinen (VMs) agiert unabhängig voneinander und kann verschiedene Betriebssysteme bereitstellen.</p>
+<h2 is-upgraded>Wie funktioniert OS Virtualisierung?</h2>
+<p>OS Virtualisierung wird durch eine Virtualisierungssoftware wie VMware, VirtualBox oder Hyper-V ermöglicht. Mithilfe dieser Software ist es möglich virtuelle Maschinen auf dem Host-System bereitzustellen. Jede VM verhält sich wie ein eigenständiger Computer mit eigener CPU, RAM, Festplatte und Netzwerkverbindung.</p>
+<h2 is-upgraded>Vorteile der OS Virtualisierung:</h2>
+<ul>
+<li><strong>Ressourcenoptimierung:</strong> Durch die Bereitstellung mehrerer virtueller Maschinen auf einem einzigen physischen Host können Ressourcen effizienter genutzt werden.</li>
+<li><strong>Isolierung:</strong> Jede virtuelle Maschine ist isoliert von anderen VMs und dem Host-Betriebssystem, was die Sicherheit und Stabilität verbessert.</li>
+<li><strong>Flexibilität:</strong> Benutzer können verschiedene Betriebssysteme und Softwarekonfigurationen auf derselben Hardware ausführen, ohne physische Computer wechseln zu müssen.</li>
+<li><strong>Skalierbarkeit:</strong> VMs können ganz leicht geklont und so höher skaliert werden.</li>
+</ul>
+<h2 is-upgraded>Nachteile von OS Virtualisierung:</h2>
+<ul>
+<li><strong>Overhead:</strong> Da VMs eine komplette physische Umgebung simulieren werden mehr Ressourcen genutzt, als womöglich von der Anwendung verlangt werden (anders als Container).</li>
+<li><strong>Komplexität:</strong> Die Verwaltung und Konfiguration von virtuellen Maschinen und dazugehörigen Infrastruktur kann komplex sein und erfordert spezielle Kenntnisse.</li>
+<li><strong>Abhängigkeit vom Hostsystem:</strong> Die Leistung und Stabilität der virtuellen Maschinen können von der Leistung und Stabilität des Host-Betriebssystems beeinflusst werden. Außerdem besteht das Risiko, dass wenn das Hostsystem nicht mehr verfügbar ist auch alle VMs auf dem System nicht mehr funktionieren.</li>
+</ul>
+<h2 is-upgraded>Anwendungsfälle:</h2>
+<ul>
+<li><strong>Serverbereitstellung:</strong> Unternehmen können mehrere Server auf einer einzigen physischen Maschine bereitstellen, was die Betriebskosten senkt.</li>
+<li><strong>Entwicklung und Testen:</strong> Entwickler können verschiedene Umgebungen für die Softwareentwicklung und Tests erstellen, ohne physische Hardware bereitstellen zu müssen.</li>
+<li><strong>Cloud Computing:</strong> Cloud-Plattformen verwenden OS-Virtualisierung, um skalierbare und flexible Dienste anzubieten.</li>
+</ul>
+<h2 is-upgraded>Schlussfolgerung:</h2>
+<p>OS Virtualisierung ist eine leistungsstarke Technologie, die es ermöglicht, Ressourcen effizient zu nutzen, Flexibilität bietet und Kosten senkt. Durch die Erstellung mehrerer virtueller Maschinen auf einem einzigen Host-System bietet die OS Virtualisierung eine Vielzahl von Anwendungsmöglichkeiten für Unternehmen und Entwickler.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[5/12] Type 1 Hypervisor [Böhm]" duration="0">
+        <p><strong>Was ist ein Type 1 Hypervisor?</strong></p>
+<p>Ein Type 1 Hypervisor, auch bekannt als &#34;Bare-Metal-Hypervisor&#34;, ist eine Virtualisierungstechnologie, die direkt auf der physischen Hardware eines Host-Rechners läuft. Er benötigt kein Host-Betriebssystem und arbeitet unabhängig, indem er die Hardware-Ressourcen verwaltet und die Erstellung sowie Verwaltung mehrerer virtueller Maschinen ermöglicht.</p>
+<p><strong>Hauptmerkmale:</strong></p>
+<ol type="1">
+<li><strong>Direkter Zugriff auf Hardware</strong>: Type 1 Hypervisors haben direkten Zugriff auf die physische Hardware, was eine effiziente Ressourcenzuweisung und optimale Leistung für virtuelle Maschinen ermöglicht.</li>
+<li><strong>Hohe Leistung</strong>: Durch die Eliminierung der Notwendigkeit eines Host-Betriebssystems können Type 1 Hypervisors hohe Leistungen erbringen, was sie ideal für Unternehmensumgebungen und Rechenzentren macht.</li>
+<li><strong>Isolation und Sicherheit</strong>: Jede virtuelle Maschine arbeitet in ihrer eigenen isolierten Umgebung, was eine robuste Sicherheit gewährleistet und Störungen zwischen VMs verhindert.</li>
+<li><strong>Skalierbarkeit</strong>: Type 1 Hypervisors können skaliert werden, um zahlreiche virtuelle Maschinen zu unterstützen, was es Organisationen ermöglicht, ihre Infrastruktur einfach an veränderte Anforderungen anzupassen.</li>
+<li><strong>Ressourcenoptimierung</strong>: Hardware-Ressourcen wie CPU, Speicher und Speicherplatz werden effizient den virtuellen Maschinen zugeteilt und maximieren die Auslastung ohne Leistungsverlust.</li>
+</ol>
+<p><strong>Beispiele für Type 1 Hypervisors:</strong></p>
+<ol type="1">
+<li><strong>VMware vSphere/ESXi</strong></li>
+<li><strong>Microsoft Hyper-V</strong> (kann zwischen Type 1 und Type 2 Hypervisor umgestellt werden)</li>
+<li><strong>Xen</strong></li>
+<li><strong>KVM (Kernel-based Virtual Machine)</strong></li>
+</ol>
+<p><strong>Vorteile:</strong></p>
+<ul>
+<li><strong>Kosteneinsparungen</strong>: Die Instanzierung mehrerer virtueller Maschinen auf einem einzigen physischen Server reduziert Hardware- und Wartungskosten.</li>
+<li><strong>Flexibilität</strong>: Type 1 Hypervisors ermöglichen die schnelle Bereitstellung und Migration virtueller Maschinen, was es Organisationen ermöglicht, sich schnell an veränderte Geschäftsanforderungen anzupassen.</li>
+<li><strong>Desaster Recovery</strong>: Virtualisierte Umgebungen bieten verbesserte Desaster-Recovery-Funktionen, mit der Möglichkeit, virtuelle Maschinen einfach zu replizieren und wiederherzustellen im Falle eines Systemausfalls.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[6/12]  Virtualization History [Platzer]" duration="0">
+        <h2 is-upgraded>Anfänge (1960er)</h2>
+<p>Die Idee der Virtualisierung entstand in den 1960er Jahren mit Großrechnern. IBM entwickelte die Virtual Machine (VM) Technologie, um mehrere Betriebssysteme auf einem einzigen Mainframe laufen zu lassen.</p>
+<h2 is-upgraded>Mainframe-Ära (1970er - 1980er)</h2>
+<p>In den 1970er und 1980er Jahren dominierten Mainframes die Computerlandschaft. Virtualisierung wurde zunehmend genutzt, um die Ressourcennutzung zu optimieren und die Kosten zu senken.</p>
+<h2 is-upgraded>Client/Server-Revolution (1990er)</h2>
+<p>Mit dem Aufkommen von Client/Server-Computing in den 1990er Jahren wurde Virtualisierung auf PCs und Servern populärer. Unternehmen begannen, Virtualisierung zur Konsolidierung von Servern und zur Verbesserung der Auslastung einzusetzen.</p>
+<h2 is-upgraded>x86-Virtualisierung (frühe 2000er)</h2>
+<p>Seit den 2010er Jahren hat die Virtualisierung einen weiteren Schub durch die Verbreitung von Cloud-Computing erhalten. Virtuelle Maschinen und Container sind nun wesentliche Bestandteile von Cloud-Infrastrukturen, die Skalierbarkeit und Effizienz bieten.</p>
+<h2 is-upgraded>Zukunftsausblick</h2>
+<p>Die Virtualisierungstechnologie entwickelt sich ständig weiter, um den Anforderungen einer sich verändernden IT-Landschaft gerecht zu werden. Die Integration von Virtualisierung mit neuen Technologien wie künstlicher Intelligenz und Edge-Computing verspricht eine spannende Zukunft.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[7/12] Type 2 Hypervisor [Marku]" duration="0">
+        <h2 is-upgraded><strong>Was sind Hypervisors?</strong></h2>
+<p> Ein Hypervisor ist eine Softwareschicht, die es ermöglicht, mehrere Betriebssysteminstanzen auf einem physischen Computer auszuführen, indem die physischen Ressourcen virtualisiert und diese als virtuelle Maschinen bezeichnet werden.</p>
+<p> Der Hypervisor, auch Virtual Machine Monitor (VMM) genannt, verwaltet diese VMs, während sie nebeneinander ausgeführt werden. Er trennt die VMs logisch voneinander und weist jeder Maschine einen eigenen Anteil der zugrunde liegenden Rechenleistung, des Arbeitsspeichers und des Speichers zu. Dadurch wird verhindert, dass sich die VMs gegenseitig stören. </p>
+<p>Es gibt zwei Kategorien von Hypevisors: Typ 1 und <strong>Typ 2</strong></p>
+<h2 is-upgraded><strong>Was ist Typ 2 Hypervisor?</strong></h2>
+<p> Ein Typ-2-Hypervisor wird nicht direkt auf der zugrunde liegenden Hardware ausgeführt, sondern als Anwendung in einem Betriebssystem. Typ-2-Hypervisors verfügen häufig über zusätzliche Toolkits, die Benutzer im Gastbetriebssystem installieren können. Diese Tools bieten erweiterte Verbindungen zwischen dem Gast- und Hostbetriebssystem. </p>
+<h2 is-upgraded><strong>Typ 2 Hypervisors</strong></h2>
+<ul>
+<li>VMWare Workstation/Fusion/Player</li>
+<li>Oracle VM VirtualBox</li>
+<li>QEMU (Quick EMUlator): Emulator and Hypervisor - integriert KVM (Kernel-based Virtual Machine - Typ 1 Hypervisor), um virtuellen Maschinen direkten Zugriff auf die Hardware Ihres Systems zu ermöglichen.</li>
+</ul>
+<h2 is-upgraded><strong>Use Cases</strong></h2>
+<ul>
+<li>Kommen in serverbasierten Umgebungen selten vor</li>
+<li>Werden am häufigsten in Desktop- und Entwicklungsumgebungen eingesetzt, in denen die Arbeitslasten nicht so ressourcenintensiv oder kritisch für den Betrieb sind.</li>
+<li>Geeignet für Benutzer, die Zugriff auf mehrere Betriebssysteme und deren Varianten brauchen - persönliche Gebrauch, kleinere Implementierungen oder Testanforderungen in mehreren Umgebungen.</li>
+</ul>
+<h2 is-upgraded><strong>Typ 1 vs. Typ 2 Hypervisor</strong></h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Vorteile</p>
+</td><td colspan="1" rowspan="1"><p>Nachteile</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>einfacher einzurichten</p>
+</td><td colspan="1" rowspan="1"><p>weniger sicher (gemeinsame Schicht)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>geringere Kosten</p>
+</td><td colspan="1" rowspan="1"><p>weniger effizient (Ressourcenzuweisung basiert auf Betriebssystem )</p>
+</td></tr>
+</table>
+<p><strong>Quellen: <br></strong><a href="https://www.ibm.com/de-de/topics/hypervisors?regionCode=AT&languageCode=de&contactmodule=true" target="_blank">Was sind Hypervisors? </a> <br><a href="https://aws.amazon.com/compare/the-difference-between-type-1-and-type-2-hypervisors/" target="_blank">What&#39;s the difference between Type 1 and Type 2 Hypervisors?</a> <br><a href="https://www.parkplacetechnologies.com/wp-content/uploads/2022/02/type-1-hypervisor-vs-type-2-1500x732.png" target="_blank">Hypervisor Types (Skizze)</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[8/12] SDN [Nährer]" duration="0">
+        <h2 is-upgraded>Definition</h2>
+<p>SDN ist ein Ansatz zur Netzwerkarchitektur, bei dem die Steuerungsebene (Control Plane) des Netzwerks von der Weiterleitungsebene (Data Plane) getrennt ist. Dadurch wird die Netzwerksteuerung programmierbar und zentralisiert, was eine flexible, dynamische und automatisierte Verwaltung des Netzwerks ermöglicht.</p>
+<h2 is-upgraded>Komponenten</h2>
+<h3 is-upgraded>1. Steuerungsebene (Control Plane)</h3>
+<ul>
+<li>Verantwortlich für die logische Steuerung und Verwaltung des Netzwerks.</li>
+<li>Besteht aus SDN-Controllern, die Netzwerkrichtlinien definieren und die Weiterleitung von Datenpaketen steuern.</li>
+</ul>
+<h3 is-upgraded>2. Weiterleitungsebene (Data Plane)</h3>
+<ul>
+<li>Verantwortlich für die tatsächliche Weiterleitung von Datenpaketen innerhalb des Netzwerks.</li>
+<li>Besteht aus Netzwerkgeräten wie Switches und Routern.</li>
+</ul>
+<h3 is-upgraded>3. Programmierschnittstellen (APIs)</h3>
+<ul>
+<li>Ermöglichen die Kommunikation zwischen der Steuerungsebene und Anwendungen oder anderen Netzwerkgeräten.</li>
+<li>Erlauben die Automatisierung und Integration von SDN in bestehende Netzwerkinfrastrukturen.</li>
+</ul>
+<h2 is-upgraded>Vorteile</h2>
+<ul>
+<li><strong>Flexibilität:</strong> Netzwerkressourcen können dynamisch und anwendungsorientiert bereitgestellt werden.</li>
+<li><strong>Skalierbarkeit:</strong> Vereinfachte Verwaltung ermöglicht eine einfache Skalierung des Netzwerks.</li>
+<li><strong>Automatisierung:</strong> Routinetätigkeiten wie Konfiguration und Fehlerbehebung können automatisiert werden.</li>
+<li><strong>Kosteneffizienz:</strong> Optimierung der Ressourcennutzung und Reduzierung von Ausfallzeiten führen zu geringeren Betriebskosten.</li>
+</ul>
+<h2 is-upgraded>Anwendungsbereiche</h2>
+<ul>
+<li><strong>Rechenzentren:</strong> SDN wird häufig eingesetzt, um die Netzwerkverwaltung in Rechenzentren zu optimieren und Cloud Computing-Umgebungen zu unterstützen.</li>
+<li><strong>Unternehmensnetzwerke:</strong> SDN kann in Unternehmensnetzwerken verwendet werden, um die Bereitstellung von Diensten zu beschleunigen und die Netzwerksicherheit zu verbessern.</li>
+<li><strong>Weitverteilte Netzwerke:</strong> SDN ermöglicht eine zentralisierte Steuerung und Verwaltung auch in weitverteilten Netzwerken, wie z. B. Telekommunikationsnetzen.</li>
+</ul>
+<h2 is-upgraded>Herausforderungen</h2>
+<ul>
+<li><strong>Komplexität:</strong> Die Einführung von SDN erfordert oft eine umfassende Umstrukturierung bestehender Netzwerkinfrastrukturen.</li>
+<li><strong>Sicherheit:</strong> Die zentrale Steuerung des Netzwerks kann potenzielle Sicherheitslücken schaffen, die sorgfältig adressiert werden müssen.</li>
+<li><strong>Interoperabilität:</strong> Die Integration von SDN in bestehende Netzwerke und Systeme kann aufgrund von Inkompatibilitäten und Standardschwierigkeiten herausfordernd sein.</li>
+</ul>
+<h2 is-upgraded>Unterschied klassisches Networking zu SDN</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Software Defined Networking (SDN)</p>
+</td><td colspan="1" rowspan="1"><p>Traditionelles Networking</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Zentralisierte Kontrollinstanz</p>
+</td><td colspan="1" rowspan="1"><p>Gerätespezifische Kontroll-Instanzen</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Frei programmierbare Control Plane</p>
+</td><td colspan="1" rowspan="1"><p>Geräteeigene Control Plane</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Standardisierte Protokolle (z. B. via OpenFlow)</p>
+</td><td colspan="1" rowspan="1"><p>Herstellerspezifische Protokolle</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Zugriff per Software auf Datenschicht möglich</p>
+</td><td colspan="1" rowspan="1"><p>Zugriffe auf Datenschicht müssen direkt an der Hardware vorgenommen werden</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Flexible, leicht skalierbare Architektur</p>
+</td><td colspan="1" rowspan="1"><p>Statische, schwer anpassbare Architektur</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Fazit</h2>
+<p>Software Defined Networking optimiert den grundlegenden Ansatz der Hardware-Virtualisierung, indem es herstellerspezifische Einschränkungen aufhebt und die Administration eines Netzwerks erheblich vereinfacht. Durch die Trennung von Steuerung und Weiterleitung wird eine flexible, dynamische und automatisierte Netzwerkverwaltung ermöglicht, die den Anforderungen moderner IT-Umgebungen gerecht wird.</p>
+<p class="image-container"><img alt="SDN Image" title="a title" src="img/4f74c529d1d63a49.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[9/12]  VLAN [Kirschner]" duration="0">
+        <p> Virtual Local Area Network</p>
+<h2 is-upgraded>Was ist ein VLAN?</h2>
+<p>Ein Virtual Local Area Network (VLAN) ist eine virtuelle, logische Trennung innerhalb eines physischen LANs <br>Es ermöglicht die Segmentierung und Organisation von Netzwerkgeräten in unterschiedlichen virtuellen Gruppen<br><br></p>
+<h2 is-upgraded>Anwendung <br></h2>
+<ul>
+<li> Wenn mehr als 200 Geräte im Netzwerk sind <br></li>
+<li> Bei VoIP-Implementierung <br></li>
+<li> Bei Gastnetzwerken <br></li>
+<li> z.B mehrere Abteilungen im Unternehmen</li>
+</ul>
+<h2 is-upgraded>Arten von VLANs <br></h2>
+<ul>
+<li>Port-Based VLANS <br>einzelne Ports werden dabei einem VLAN zugeordnet</li>
+<li>Protocol Based VLAN <br>Datenpakete bestimmter Protokolle werden in separate VLANs durchgeleitet <br></li>
+<li>MAC Based VLANS <br>dem VLAN wird ein Netzwerkgerät zugewiesen</li>
+</ul>
+<h2 is-upgraded>Statisch vs Dynamisch <br></h2>
+<ul>
+<li>Statisch <br>Jeder Switch-Port wird einem bestimmten VLAN zugewiesen <br>bieten gute Kontrolle <br> <br></li>
+<li>Dynamisch <br>Dem bestimmten Gerät wird automatisch ein VLAN zugewiesen <br>Einsatz wenn sich Geräte sich häufig im Netzwerk bewegen</li>
+</ul>
+<h2 is-upgraded>Vorteile</h2>
+<ul>
+<li>Geringere Netzwerklast <br>Durch Segmentierung werden Broadcast-Domänen reduziert <br>Bandbreite der VLANs kann jeweils abgestimmt werden</li>
+<li>Günstiger Netzwerkausbau/geringere Stromkosten <br>Statt zusätzlicher Hardware werden Netzwerke logisch aufgeteilt <br>Erhebliche Reduzierung der Stromkosten</li>
+<li>Sicherheit <br> Isolierung von Sicherheitsrisiken <br>Im Falle eines Angriffes wird nicht das gesamte Netzwerk betroffen <br>Firewalleinstellungen <br> <br> Compliance/Datenschutz <br>Bestimmte Daten werden nur duch gewisse Ports geleitet</li>
+</ul>
+<h2 is-upgraded> Nachteile</h2>
+<ul>
+<li>Single Point of Failure<br> wenn ein Switch ausfällt, kann ganzes Netzwerk abgeschnitten werden</li>
+<li>Fehlerbehebung<br> Die Segmentierung des Netzwerks kann die Fehlersuche erschweren</li>
+</ul>
+<p>Quellen:</p>
+<p>- <a href="https://de.wikipedia.org/wiki/Virtual_Local_Area_Network" target="_blank">Virtual Local Area Network (Wikipedia)</a><br>- <a href="https://www.ip-insider.de/was-ist-vlan-a-598987/" target="_blank">Was ist VLAN? (IP Insider)</a><br>- <a href="https://www.giga.de/artikel/vlan-was-ist-das/#was_ist_ein_vlan" target="_blank">VLAN: Was ist das? (GIGA)</a><br>- <a href="https://www.guru99.com/de/vlan-definition-types-advantages.html" target="_blank">VLAN Definition, Arten und Vorteile (Guru99)</a></p>
+<p class="image-container"><img alt="SDN Image" title="a title" src="img/cd08a6c85924c681.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[10/12] VXLAN [Ivancsits]" duration="0">
+        <h2 is-upgraded>Was ist VXLAN?</h2>
+<p>VXLAN steht für Virtual Extensible LAN und ist ein Protokoll, das entwickelt wurde, um die Skalierbarkeit von virtuellen Netzwerken in Rechenzentren zu verbessern.</p>
+<h2 is-upgraded>Wie funktioniert VXLAN?</h2>
+<p>VXLAN kapselt vorhandene Layer-2-Ethernet-Frames in UDP-Pakete und ermöglicht es, virtuelle Layer-2-Netzwerke über ein vorhandenes Layer-3-Netzwerk zu erstellen. Dadurch können virtuelle Maschinen in verschiedenen Subnetzen kommunizieren.</p>
+<h2 is-upgraded>Hauptmerkmale von VXLAN:</h2>
+<ul>
+<li><strong>Skalierbarkeit:</strong> Erlaubt die Erstellung von bis zu 16 Millionen virtuellen Netzwerken, was die Organisation von Netzwerkressourcen erleichtert.</li>
+<li><strong>Isolation:</strong> Jedes VXLAN-Segment ist isoliert und kann seine eigenen Policies für Sicherheit und Qualität der Dienste haben.</li>
+<li><strong>Overlay-Netzwerk:</strong> VXLAN ermöglicht die Erweiterung von Layer-2-Netzwerken über Layer-3-Grenzen hinweg, was die Flexibilität und Skalierbarkeit verbessert.</li>
+<li><strong>Kompatibilität:</strong> VXLAN kann auf Standard-Ethernet-Hardware implementiert werden und ist in den meisten modernen Netzwerkgeräten unterstützt.</li>
+</ul>
+<h2 is-upgraded>Anwendungen von VXLAN:</h2>
+<ul>
+<li><strong>Cloud Computing:</strong> Vereinfacht das Management und die Skalierung von virtuellen Netzwerken in Cloud-Infrastrukturen.</li>
+<li><strong>Rechenzentren:</strong> Ermöglicht die flexible Bereitstellung und Migration von virtuellen Maschinen in virtualisierten Rechenzentren.</li>
+</ul>
+<h2 is-upgraded>Vorteile von VXLAN:</h2>
+<ul>
+<li>Verbesserte Skalierbarkeit und Flexibilität</li>
+<li>Bessere Ressourcennutzung und -verwaltung</li>
+</ul>
+<h2 is-upgraded>Fazit:</h2>
+<p>VXLAN ist ein leistungsstarkes Protokoll für die Netzwerkvirtualisierung, das die Skalierbarkeit, Flexibilität und Isolation virtueller Netzwerke verbessert. Durch die Erweiterung von Layer-2-Netzwerken über Layer-3-Grenzen hinweg ermöglicht VXLAN eine effizientere Nutzung von Netzwerkressourcen in modernen Rechenzentren und Cloud-Umgebungen.</p>
+<h2 is-upgraded>Quelle Bild:</h2>
+<p><a href="https://www.techtarget.com/searchnetworking/tip/VXLAN-vs-VLAN-Whats-the-difference" target="_blank">Bild VXLAN</a></p>
+<p class="image-container"><img alt="SDN Image" title="a title" src="img/58379223e9a90577.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[11/12] Limitations of Virtualization [Dshandshgava]" duration="0">
+        <p><strong>Ressourcenverteilung</strong></p>
+<p>Eine der zentralen Herausforderungen der Virtualisierung liegt in der effizienten Verteilung von Ressourcen. Dabei kann es vorkommen, dass einige virtuelle Systeme über ausreichende Ressourcen verfügen, während andere unterversorgt sind. Dies führt zu einer ungleichen Leistungsfähigkeit der Systeme und kann die Gesamteffizienz der Infrastruktur beeinträchtigen. Die Lösung dieses Problems erfordert eine sorgfältige Kapazitätsplanung in Zusammenarbeit mit dem Dienstleister, um sicherzustellen, dass Ressourcen entsprechend den Anforderungen zugeordnet werden.</p>
+<p><strong>VM-Überlastung</strong></p>
+<p>Die unbegrenzte Möglichkeit, virtuelle Maschinen zu erstellen, birgt das Risiko einer übermäßigen Verbreitung von VMs, die als &#34;VM-Überlastung&#34; bezeichnet wird. Diese Situation kann dazu führen, dass unnötige Ressourcen für nicht verwendete VMs verschwendet werden, während gleichzeitig wichtige VMs unzureichende Ressourcen erhalten. Um dieses Problem vorzubeugen, ist es wichtig, klare Richtlinien für die Bereitstellung von VMs festzulegen und regelmäßig zu überwachen, um nicht benötigte VMs zu identifizieren und zu entfernen.</p>
+<p><strong>Rückwärtskompatibilität</strong></p>
+<p>Die Integration veralteter Legacy-Systeme in eine virtualisierte Umgebung kann zu Kompatibilitätsproblemen führen. Die unterschiedlichen Anforderungen und Funktionsweisen älterer Systeme können Schwierigkeiten bei der nahtlosen Integration mit modernen virtualisierten Umgebungen verursachen. Um solche Probleme zu lösen, ist es oft erforderlich, Upgrades durchzuführen oder Workarounds zu implementieren, um sicherzustellen, dass die Systeme reibungslos zusammenarbeiten.</p>
+<p><strong>Leistungsüberwachung</strong></p>
+<p>Die Überwachung der Leistung virtualisierter Systeme erfordert spezielle Tools und Methoden, da herkömmliche Leistungsüberwachungsmethoden oft nicht ausreichen. Die Komplexität virtueller Umgebungen erfordert präzise Benchmarks und Metriken, um die Leistung und Ressourcennutzung effektiv zu überwachen und Engpässe frühzeitig zu identifizieren.</p>
+<p><strong>Sicherheit</strong></p>
+<p>Die Sicherheit virtueller Umgebungen stellt eine weitere Herausforderung dar, insbesondere wenn Benutzer nicht bewährte Sicherheitspraktiken befolgen. Die Isolierung jeder virtuellen Maschine bietet zwar gewisse Sicherheitsvorteile, jedoch müssen dennoch strenge Sicherheitsrichtlinien implementiert und eingehalten werden, um potenzielle Sicherheitslücken zu minimieren.</p>
+<p><strong>Lizenzkonformität</strong></p>
+<p>Die Nutzung lizenzierter Software in einer virtualisierten Umgebung erfordert eine genaue Einhaltung der Lizenzbestimmungen. Das unkontrollierte Erstellen von VMs kann zu Lizenzverletzungen führen, wenn die Anzahl der erstellten VMs die Anzahl der erworbenen Lizenzen überschreitet. Um dies zu vermeiden, müssen Organisationen die Lizenzierung von Software sorgfältig überwachen und sicherstellen, dass sie den Compliance-Anforderungen entsprechen.</p>
+<p><strong>Netzwerkverkehrsstau</strong></p>
+<p>Die Konsolidierung mehrerer Workloads auf einem physischen Server kann zu Netzwerküberlastungen führen, insbesondere wenn die Netzwerkbandbreite nicht ausreichend ist. Dies kann zu Performance-Einbußen und Kommunikationsproblemen zwischen den virtuellen Maschinen führen. Eine sorgfältige Netzwerkplanung und gegebenenfalls die Aktualisierung der Netzwerkinfrastruktur sind erforderlich, um diese Probleme zu lösen.</p>
+<p><strong>Mäßige Anwendungsleistung</strong></p>
+<p>Die Virtualisierung von Anwendungen kann zu Leistungsproblemen führen, insbesondere bei älteren oder speziellen Anwendungen. Die Umstellung auf virtuelle Umgebungen erfordert oft Anpassungen und Optimierungen, um sicherzustellen, dass die Anwendungen reibungslos funktionieren. Eine umfassende Testphase vor der Implementierung kann dabei helfen, potenzielle Leistungsprobleme frühzeitig zu identifizieren und zu beheben.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[12/12] SAN [Vedanayagam]" duration="0">
+        <p>TBD</p>
 
 
       </google-codelab-step>
@@ -149,8 +567,8 @@ terraform {
 }
 
 provider &#34;exoscale&#34; {
-  key      = &#34;EXO9a94805185b8e58bd27d0227&#34;
-  secret   = &#34;lAkUIGH_LbGNCuOYbe2Rl840CV9xUGXOlDp2dJngJTU&#34;
+  key    = &#34;EXO9a94805185b8e58bd27d0227&#34;
+  secret = &#34;lAkUIGH_LbGNCuOYbe2Rl840CV9xUGXOlDp2dJngJTU&#34;
 }
 </code></pre>
 <pre><code language="language-hcl" class="language-hcl"># sg.tf
@@ -162,7 +580,7 @@ resource &#34;exoscale_security_group_rule&#34; &#34;sg_rule_ssh_ingress&#34; {
   security_group_id = exoscale_security_group.sg_ssh_only.id
   type              = &#34;INGRESS&#34;
   protocol          = &#34;TCP&#34;
-  cidr              = &#34;0.0.0.0/0&#34; # &#34;::/0&#34; for IPv6
+  cidr = &#34;0.0.0.0/0&#34; # &#34;::/0&#34; for IPv6
   description       = &#34;Allow SSH access from anywhere&#34;
   start_port        = 22
   end_port          = 22
