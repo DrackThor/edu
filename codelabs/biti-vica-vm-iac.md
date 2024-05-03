@@ -35,8 +35,6 @@ Welcome to Virtual Machines and IaC :-)
 - [KCNA Cert](https://training.linuxfoundation.org/certification/kubernetes-cloud-native-associate/)
 - [JetBrains Free Licenses](https://www.jetbrains.com/community/education/#students)
 
-# TODO KCNA, CNCF Academic
-
 ## [1/12] Performance Impact von Virtualisierung [Sieber]
 
 **Einführung:** Virtualisierung ermöglicht die Ausführung mehrerer Betriebssysteme und Anwendungen auf einem einzelnen
