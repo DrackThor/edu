@@ -48,6 +48,8 @@
 <li><a href="https://kodekloud.com/" target="_blank">KodeKloud</a></li>
 <li><a href="https://community.exoscale.com/" target="_blank">Exoscale Docs</a></li>
 <li><a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank">HasciCorp Tutorials</a></li>
+<li><a href="https://training.linuxfoundation.org/certification/kubernetes-cloud-native-associate/" target="_blank">KCNA Cert</a></li>
+<li><a href="https://www.jetbrains.com/community/education/#students" target="_blank">JetBrains Free Licenses</a></li>
 </ul>
 <p>TODO KCNA, CNCF Academic</p>
 
@@ -445,7 +447,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="[11/12] Limitations of Virtualization [Dshandshgava]" duration="0">
-        <p>*<em>Ressourcenverteilung</em></p>
+        <p><strong>Ressourcenverteilung</strong></p>
 <p>Eine der zentralen Herausforderungen der Virtualisierung liegt in der effizienten Verteilung von Ressourcen. Dabei kann es vorkommen, dass einige virtuelle Systeme über ausreichende Ressourcen verfügen, während andere unterversorgt sind. Dies führt zu einer ungleichen Leistungsfähigkeit der Systeme und kann die Gesamteffizienz der Infrastruktur beeinträchtigen. Die Lösung dieses Problems erfordert eine sorgfältige Kapazitätsplanung in Zusammenarbeit mit dem Dienstleister, um sicherzustellen, dass Ressourcen entsprechend den Anforderungen zugeordnet werden.</p>
 <p><strong>VM-Überlastung</strong></p>
 <p>Die unbegrenzte Möglichkeit, virtuelle Maschinen zu erstellen, birgt das Risiko einer übermäßigen Verbreitung von VMs, die als &#34;VM-Überlastung&#34; bezeichnet wird. Diese Situation kann dazu führen, dass unnötige Ressourcen für nicht verwendete VMs verschwendet werden, während gleichzeitig wichtige VMs unzureichende Ressourcen erhalten. Um dieses Problem vorzubeugen, ist es wichtig, klare Richtlinien für die Bereitstellung von VMs festzulegen und regelmäßig zu überwachen, um nicht benötigte VMs zu identifizieren und zu entfernen.</p>
@@ -465,8 +467,52 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="[12/12] SAN [Vedanayagam]" duration="0">
-        <p>TBD</p>
+      <google-codelab-step label="[12/12] SAN (NAS) [Vedanayagam]" duration="0">
+        <p class="image-container"><img alt="alt text" src="img/f07a2ba975d23884.png"></p>
+<h2 is-upgraded>Einführung</h2>
+<p>Ein Network Attached Storage (NAS) ist ein Speichergerät, das mit einem Netzwerk verbunden ist und die Speicherung und den Abruf von Daten von einem zentralen Ort aus ermöglicht. NAS-Geräte werden häufig in Privathaushalten, kleinen Unternehmen und Unternehmen eingesetzt, um Dateien, Datensicherungen und Multimedia-Inhalte zu speichern und gemeinsam zu nutzen.</p>
+<p>Cloud-NAS wird oft für Backup und Archivierung genutzt. Cloud-NAS ist ähnlich wie lokales NAS, aber die Speichergeräte befinden sich in den Rechenzentren eines Cloud-Anbieters.</p>
+<h2 is-upgraded>Hauptfunktionen</h2>
+<ul>
+<li><strong>Zentraler Speicher:</strong> NAS bietet einen zentralen Speicherort, der allen Geräten im Netzwerk zugänglich ist.</li>
+<li><strong>Datenredundanz:</strong> Viele NAS-Geräte unterstützen RAID-Konfigurationen für Datenredundanz und zum Schutz vor Festplattenausfällen.</li>
+<li><strong>Fernzugriff:</strong> Benutzer können von überall auf der Welt auf Dateien zugreifen, die auf NAS gespeichert sind, und so bequem Dateifreigaben und Zusammenarbeit ermöglichen.</li>
+<li><strong>Medienstreaming:</strong> NAS-Geräte unterstützen häufig das Medienstreaming, sodass Benutzer Videos, Musik und andere Multimedia-Inhalte auf verbundene Geräte wie Smart-TVs und Media-Player streamen können.</li>
+<li><strong>Datensicherung:</strong> NAS kann zur Automatisierung von Datensicherungsaufgaben verwendet werden und bietet so eine zuverlässige Backup-Lösung für wichtige Dateien und Daten.</li>
+</ul>
+<h2 is-upgraded>Vorteile</h2>
+<ul>
+<li><strong>Einfache Verwaltung:</strong> NAS ist benutzerfreundlich und erfordert möglicherweise kein spezielles IT-Personal für die Verwaltung, besonders bei kleineren Systemen.</li>
+<li><strong>Kosteneffizienz:</strong> NAS-Geräte sind oft kostengünstiger als herkömmliche Dateiserver und bieten eine niedrigere Gesamtbetriebskosten. Kunden nur die in Anspruch genommenen Dienste in Rechnung gestellt werden in der Cloud.</li>
+<li><strong>Benutzerfreundlichkeit:</strong> Viele NAS-Geräte verfügen über benutzerfreundliche Oberflächen und Einrichtungsassistenten, die die Konfiguration und Verwaltung erleichtern.</li>
+<li><strong>Datensicherheit:</strong> NAS-Geräte bieten Funktionen wie Benutzerauthentifizierung, Zugriffssteuerung und Verschlüsselung, um die Datensicherheit und -privatsphäre zu gewährleisten.</li>
+<li><strong>Automatische Datensicherung und erweiterte Funktionen:</strong> NAS ermöglicht automatische Datensicherung auf verschiedenen Geräten sowie erweiterte Funktionen wie Deduplizierung und Cloud-Replikation.</li>
+<li><strong>Replikationen:</strong> NAS-Ressourcen in einer Cloud-Umgebung können vielfach dupliziert werden.</li>
+</ul>
+<h2 is-upgraded>Nachteile</h2>
+<ul>
+<li><strong>Skalierbarkeit und Komplexität:</strong> Das Hinzufügen von Laufwerken zur Skalierung von NAS-Systemen kann die Verwaltung komplexer machen und zusätzliche Kosten verursachen.</li>
+<li><strong>Begrenzte Leistung:</strong> Einige NAS-Geräte können bei intensiver Nutzung eine begrenzte Leistung aufweisen, insbesondere im Vergleich zu dedizierten Servern.</li>
+<li><strong>Begrenzte Erweiterbarkeit:</strong> Obwohl NAS-Geräte in der Regel skalierbar sind, kann die Erweiterung über bestimmte Grenzen hinaus komplex oder teuer sein.</li>
+<li><strong>Abhängigkeit von Netzwerkgeschwindigkeit:</strong> Die Leistung eines NAS-Geräts kann stark von der Netzwerkgeschwindigkeit abhängen, insbesondere bei gleichzeitiger Nutzung durch mehrere Benutzer.</li>
+<li><strong>Eingeschränkte Anpassung an strukturierte Umgebungen</strong>: NAS ist möglicherweise nicht optimal für strukturierte Umgebungen oder andere Arten der Speicherung geeignet, da es in erster Linie auf die Speicherung von Dateien und unstrukturierten Daten ausgerichtet ist.</li>
+<li><strong>Speicherort:</strong> In der Cloud liegen die Daten auf einem fremden Server.</li>
+</ul>
+<h2 is-upgraded>Beispiel Schema</h2>
+<p class="image-container"><img alt="On-site and cloud NAS" src="img/d66d5331f1e7d9be.png"></p>
+<h2 is-upgraded>Beliebte NAS-Marken</h2>
+<ul>
+<li><strong>Synology:</strong> Bekannt für seine benutzerfreundliche Oberfläche und umfangreichen Funktionen.</li>
+<li><strong>QNAP:</strong> Bietet eine breite Palette von NAS-Lösungen für verschiedene Anforderungen und Budgets.</li>
+<li><strong>Western Digital (WD):</strong> Bietet NAS-Geräte unter seiner WD Red-Serie an, die für NAS-Umgebungen optimiert sind.</li>
+<li><strong>Buffalo:</strong> Bietet erschwingliche NAS-Lösungen, die sich für Heim- und Kleinunternehmensbenutzer eignen.</li>
+<li><strong>Netgear:</strong> Bekannt für seine zuverlässigen und leistungsstarken NAS-Geräte.</li>
+</ul>
+<h2 is-upgraded>Abbildung von einem NAS</h2>
+<p class="image-container"><img alt="NAS front and back side" src="img/adf4dec20266884.jpg"></p>
+<h2 is-upgraded>Fazit</h2>
+<p>Ein NAS bietet eine vielseitige und effiziente Speicherlösung für Privathaushalte, Unternehmen und Unternehmen, die zentralen Speicher, Datenredundanz, Fernzugriff und andere wichtige Funktionen bietet. Mit einer breiten Palette von NAS-Geräten verschiedener Marken können Benutzer eine Lösung finden, die ihren spezifischen Anforderungen und ihrem Budget entspricht.</p>
+<p>Zusätzlich bietet Cloud-NAS den Vorteil des Zugriffs von überall aus, ohne zusätzlichen Platzbedarf und mit flexibler Skalierbarkeit, was es zu einer attraktiven Option für Organisationen macht, die nach einer kosteneffektiven und benutzerfreundlichen Lösung für die Datenspeicherung suchen.</p>
 
 
       </google-codelab-step>

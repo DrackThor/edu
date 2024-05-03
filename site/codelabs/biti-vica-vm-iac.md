@@ -32,6 +32,8 @@ Welcome to Virtual Machines and IaC :-)
 - [KodeKloud](https://kodekloud.com/)
 - [Exoscale Docs](https://community.exoscale.com/)
 - [HasciCorp Tutorials](https://developer.hashicorp.com/terraform/tutorials)
+- [KCNA Cert](https://training.linuxfoundation.org/certification/kubernetes-cloud-native-associate/)
+- [JetBrains Free Licenses](https://www.jetbrains.com/community/education/#students)
 
 # TODO KCNA, CNCF Academic
 
@@ -517,9 +519,62 @@ Die Virtualisierung von Anwendungen kann zu Leistungsproblemen führen, insbeson
 Die Umstellung auf virtuelle Umgebungen erfordert oft Anpassungen und Optimierungen, um sicherzustellen, dass die Anwendungen reibungslos funktionieren.
 Eine umfassende Testphase vor der Implementierung kann dabei helfen, potenzielle Leistungsprobleme frühzeitig zu identifizieren und zu beheben.
 
-## [12/12] SAN [Vedanayagam]
+## [12/12] SAN (NAS) [Vedanayagam]
 
-TBD
+![alt text](./img/NAS_icon-1.png)
+
+### Einführung
+Ein Network Attached Storage (NAS) ist ein Speichergerät, das mit einem Netzwerk verbunden ist und die Speicherung und den Abruf von Daten von einem zentralen Ort aus ermöglicht. NAS-Geräte werden häufig in Privathaushalten, kleinen Unternehmen und Unternehmen eingesetzt, um Dateien, Datensicherungen und Multimedia-Inhalte zu speichern und gemeinsam zu nutzen. 
+
+Cloud-NAS wird oft für Backup und Archivierung genutzt. Cloud-NAS ist ähnlich wie lokales NAS, aber die Speichergeräte befinden sich in den Rechenzentren eines Cloud-Anbieters.
+
+### Hauptfunktionen
+- **Zentraler Speicher:** NAS bietet einen zentralen Speicherort, der allen Geräten im Netzwerk zugänglich ist.
+- **Datenredundanz:** Viele NAS-Geräte unterstützen RAID-Konfigurationen für Datenredundanz und zum Schutz vor Festplattenausfällen.
+- **Fernzugriff:** Benutzer können von überall auf der Welt auf Dateien zugreifen, die auf NAS gespeichert sind, und so bequem Dateifreigaben und Zusammenarbeit ermöglichen.
+- **Medienstreaming:** NAS-Geräte unterstützen häufig das Medienstreaming, sodass Benutzer Videos, Musik und andere Multimedia-Inhalte auf verbundene Geräte wie Smart-TVs und Media-Player streamen können.
+- **Datensicherung:** NAS kann zur Automatisierung von Datensicherungsaufgaben verwendet werden und bietet so eine zuverlässige Backup-Lösung für wichtige Dateien und Daten.
+
+
+### Vorteile
+- **Einfache Verwaltung:** NAS ist benutzerfreundlich und erfordert möglicherweise kein spezielles IT-Personal für die Verwaltung, besonders bei kleineren Systemen.
+- **Kosteneffizienz:** NAS-Geräte sind oft kostengünstiger als herkömmliche Dateiserver und bieten eine niedrigere Gesamtbetriebskosten. Kunden nur die in Anspruch genommenen Dienste in Rechnung gestellt werden in der Cloud.
+- **Benutzerfreundlichkeit:** Viele NAS-Geräte verfügen über benutzerfreundliche Oberflächen und Einrichtungsassistenten, die die Konfiguration und Verwaltung erleichtern.
+- **Datensicherheit:** NAS-Geräte bieten Funktionen wie Benutzerauthentifizierung, Zugriffssteuerung und Verschlüsselung, um die Datensicherheit und -privatsphäre zu gewährleisten.
+- **Automatische Datensicherung und erweiterte Funktionen:** NAS ermöglicht automatische Datensicherung auf verschiedenen Geräten sowie erweiterte Funktionen wie Deduplizierung und Cloud-Replikation.
+- **Replikationen:** NAS-Ressourcen in einer Cloud-Umgebung können vielfach dupliziert werden.
+
+### Nachteile
+- **Skalierbarkeit und Komplexität:** Das Hinzufügen von Laufwerken zur Skalierung von NAS-Systemen kann die Verwaltung komplexer machen und zusätzliche Kosten verursachen.
+- **Begrenzte Leistung:** Einige NAS-Geräte können bei intensiver Nutzung eine begrenzte Leistung aufweisen, insbesondere im Vergleich zu dedizierten Servern.
+- **Begrenzte Erweiterbarkeit:** Obwohl NAS-Geräte in der Regel skalierbar sind, kann die Erweiterung über bestimmte Grenzen hinaus komplex oder teuer sein.
+- **Abhängigkeit von Netzwerkgeschwindigkeit:** Die Leistung eines NAS-Geräts kann stark von der Netzwerkgeschwindigkeit abhängen, insbesondere bei gleichzeitiger Nutzung durch mehrere Benutzer.
+- **Eingeschränkte Anpassung an strukturierte Umgebungen**: NAS ist möglicherweise nicht optimal für strukturierte Umgebungen oder andere Arten der Speicherung geeignet, da es in erster Linie auf die Speicherung von Dateien und unstrukturierten Daten ausgerichtet ist.
+- **Speicherort:** In der Cloud liegen die Daten auf einem fremden Server. 
+
+### Beispiel Schema
+
+![On-site and cloud NAS](./img/on_site_nas_and_cloud_nas_compared-f-1.png)
+
+
+
+### Beliebte NAS-Marken
+- **Synology:** Bekannt für seine benutzerfreundliche Oberfläche und umfangreichen Funktionen.
+- **QNAP:** Bietet eine breite Palette von NAS-Lösungen für verschiedene Anforderungen und Budgets.
+- **Western Digital (WD):** Bietet NAS-Geräte unter seiner WD Red-Serie an, die für NAS-Umgebungen optimiert sind.
+- **Buffalo:** Bietet erschwingliche NAS-Lösungen, die sich für Heim- und Kleinunternehmensbenutzer eignen.
+- **Netgear:** Bekannt für seine zuverlässigen und leistungsstarken NAS-Geräte.
+
+### Abbildung von einem NAS
+![NAS front and back side](./img/NAS-front-back-1.jpg)
+
+
+### Fazit
+Ein NAS bietet eine vielseitige und effiziente Speicherlösung für Privathaushalte, Unternehmen und Unternehmen, die zentralen Speicher, Datenredundanz, Fernzugriff und andere wichtige Funktionen bietet. Mit einer breiten Palette von NAS-Geräten verschiedener Marken können Benutzer eine Lösung finden, die ihren spezifischen Anforderungen und ihrem Budget entspricht.
+
+Zusätzlich bietet Cloud-NAS den Vorteil des Zugriffs von überall aus, ohne zusätzlichen Platzbedarf und mit flexibler Skalierbarkeit, was es zu einer attraktiven Option für Organisationen macht, die nach einer kosteneffektiven und benutzerfreundlichen Lösung für die Datenspeicherung suchen.
+
+
 
 ## Infrastructure-as-Code: Basics
 
