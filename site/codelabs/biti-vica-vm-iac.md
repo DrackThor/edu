@@ -22,8 +22,7 @@ Welcome to Virtual Machines and IaC :-)
 
 - a notebook
 - access to the internet
-- `terraform` installed
-  locally[Performance Impact Virtualization.md](..%2F..%2F..%2F..%2F..%2FDownloads%2FPerformance%20Impact%20Virtualization.md)
+- `terraform` installed locally
 - Exoscale access
 - a thirst for knowledge, a clear mind and an insatiable urge to learn
 
