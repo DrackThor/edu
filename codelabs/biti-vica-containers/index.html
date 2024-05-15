@@ -45,60 +45,514 @@
 <li><a href="https://kodekloud.com/" target="_blank">KodeKloud</a></li>
 <li><a href="https://training.linuxfoundation.org/training/introduction-to-cloud-infrastructure-technologies/" target="_blank">Linux Foundation LFS151x</a></li>
 </ul>
-<p>Let&#39;s create a markdown file with a simple Docker demo for serving a static website using Nginx.</p>
-<p>tutorial_content = &#34;&#34;&#34;</p>
-<p>Docker Demo: Serving a Static Website with Nginx</p>
-<p>This tutorial guides you through the process of containerizing and serving a static website using Nginx inside a Docker container. We&#39;ll start by creating a simple, nice-looking demo page, then we&#39;ll build a Docker image that serves this page using Nginx.</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Prerequisites" duration="0">
-        <ul>
-<li>Docker installed on your machine. If you haven&#39;t installed Docker yet, follow the installation instructions for your platform on the <a href="https://docs.docker.com/get-docker/" target="_blank">Docker official website</a>.</li>
+      <google-codelab-step label="[1/12] [Sieber]" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[2/12] [Scheifinger] What does &#34;Cloud Native&#34; mean?" duration="0">
+        <h2 is-upgraded>Definition</h2>
+<p>Cloud Native bezieht sich auf die Gestaltung, Entwicklung und den Betrieb von Anwendungen unter Verwendung von bestimmten Technologie Stacks. Der Begriff ist eng mit Technologien wie Microservices, Containern und dynamischen Orchestrierern verbunden. Die Cloud Native Computing Foundation ist ein Projekt der Linux Foundation und steht hinter dem Begriff. Sie führen eine Liste an Cloud Native Applikationen, zu finden unter <a href="https://landscape.cncf.io/" target="_blank">CNCF Landscape</a>. Dort findet man alle Applikationen und Tools die mit Cloud Native zu tun haben.</p>
+<h2 is-upgraded>Wichtige Begriffe</h2>
+<ul>
+<li><strong>Microservices</strong>: Anwendungen werden als Sammlung kleiner, unabhängiger Dienste entwickelt.</li>
+<li><strong>Containerisierung</strong>: Anwendungen und ihre Abhängigkeiten werden in Containern bereitgestellt, die sich leicht verschieben und skalieren lassen.</li>
+<li><strong>Dynamische Orchestrierung</strong>: Automatisiertes Management, Skalierung und Optimierung von Container-Anwendungen.</li>
+</ul>
+<h2 is-upgraded>Vorteile</h2>
+<ul>
+<li><strong>Skalierbarkeit</strong>: Einfaches Bereitstellen oder löschen von Ressourcen nach Bedarf und Anforderungen.</li>
+<li><strong>Flexibilität</strong>: Hohe Anpassungsfähigkeit an Geschäftsanforderungen und schnelle Anpassung Möglichkeit.</li>
+<li><strong>Robustheit</strong>: Verbesserte Ausfallsicherheit und Verfügbarkeit durch dezentralen und redundanten Aufbau.</li>
+</ul>
+<h2 is-upgraded>Nachteile</h2>
+<ul>
+<li><strong>Komplexität</strong>: CN-Architekturen sind oft komplex in der Handhabung, besonders wenn die Deployments in die Größe wachsen.</li>
+<li><strong>Sicherheit</strong>: In Verteilten Systemen ist es schwieriger gewisse Sicherheitsstandards einzuhalten.</li>
+<li><strong>Kosten und Kostenmanagement</strong>: Einerseits können die Kosten sehr schnell nach oben gehen, weiters ist es oft nicht einfach die Kosten unter Kontrolle zu halten. Vorallem bei automatisch skalierenden Anwendungen.</li>
+</ul>
+<h2 is-upgraded>Beispiele von Software die in Verwendung ist:</h2>
+<ul>
+<li><strong>Kubernetes</strong>: Ein Orchestrierungstool für die Automatisierung der Bereitstellung, Skalierung und Verwaltung von Containeranwendungen.</li>
+<li><strong>Docker</strong>: Eine Plattform für Entwickler und Sysadmins zur Erstellung, Bereitstellung und Ausführung von Anwendungen in Containern.</li>
+<li><strong>Argo</strong>: CI/CD Tool für das Deployment.</li>
+<li><strong>Longhorn</strong>: Verteilte Speicherlösung für Kubernetes.</li>
+<li><strong>Qdrant</strong>: Vector Database for AI Applications.</li>
+<li><strong>Helm</strong>: Ein Kubernetes Package Manager.</li>
+</ul>
+<h2 is-upgraded>Trends</h2>
+<ul>
+<li><strong>Serverless</strong>: Diese Technologie stellt eine Weiterentwicklung des Cloud-Native-Ansatzes dar. Sie ermöglicht es Entwicklern, sich voll und ganz auf das Schreiben von Code zu konzentrieren, ohne sich Gedanken über die zugrundeliegende Infrastruktur machen zu müssen.</li>
+<li><strong>Edge Computing</strong>: Hierbei handelt es sich um eine Technik, bei der die Datenverarbeitung näher an den Ort der Datenerzeugung verlagert wird. Dies reduziert die Latenzzeiten erheblich und steigert die Effizienz.</li>
+</ul>
+<h2 is-upgraded>Feedback</h2>
+<p>Fragen:</p>
+<ul>
+<li>Werden bei &#34;cloud-native&#34; andere/neuere Technologien wie vor 10 Jahren verwendet? Programmiersprachen, Protokolle, ...</li>
+</ul>
+<p>Anmerkung:</p>
+<ul>
+<li>Microservices müssen nicht &#34;unabhängig&#34; sein</li>
+<li>siehe <a href="https://github.com/cncf/toc/blob/main/DEFINITION.md" target="_blank">Cloud Native Definition CNCF</a></li>
+<li>👍 Trends/Beispiele</li>
 </ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Step 1: Create a Demo Web Page" duration="0">
-        <p>First, create a directory for your project and navigate into it:</p>
-<pre><code language="language-bash" class="language-bash">mkdir nginx-static-site
-cd nginx-static-site
+      <google-codelab-step label="[3/12] [Raab]" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[4/12] [Guttmann] Virtuelle Maschinen" duration="0">
+        <p>Virtuelle Maschinen (VMs) sind Replikationen physischer Computer, die es ermöglichen, mehrere Betriebssysteminstanzen auf einem einzigen physischen Host-Computer auszuführen. Jede VM verhält sich wie ein eigenständiger Computer mit eigener CPU, RAM, Festplatte und Netzwerkverbindung.</p>
+<h2 is-upgraded>Wie funktionieren VMs?</h2>
+<p>VMs werden durch Virtualisierungssoftware wie VMware, VirtualBox oder Hyper-V erstellt. Mithilfe dieser Software ist es möglich virtuelle Maschinen auf dem Host-System bereitzustellen.</p>
+<h2 is-upgraded>Vorteile von Virtuellen Maschinen:</h2>
+<ul>
+<li><strong>Ressourcenoptimierung:</strong> Durch die Bereitstellung mehrerer virtueller Maschinen auf einem einzigen physischen Host können Ressourcen effizienter genutzt werden.</li>
+<li><strong>Isolierung:</strong> Jede virtuelle Maschine ist isoliert von anderen VMs und dem Host-Betriebssystem, was die Sicherheit und Stabilität verbessert.</li>
+<li><strong>Flexibilität:</strong> Benutzer können verschiedene Betriebssysteme und Softwarekonfigurationen auf derselben Hardware ausführen, ohne physische Computer wechseln zu müssen.</li>
+<li><strong>Skalierbarkeit:</strong> VMs können ganz leicht geklont und so höher skaliert werden.</li>
+</ul>
+<h2 is-upgraded>Nachteile von Virtuellen Maschinen:</h2>
+<ul>
+<li><strong>Overhead:</strong> Da VMs eine komplette physische Umgebung simulieren werden mehr Ressourcen genutzt, als womöglich von der Anwendung verlangt werden (anders als Container).</li>
+<li><strong>Komplexität:</strong> Die Verwaltung und Konfiguration von virtuellen Maschinen und dazugehörigen Infrastruktur kann komplex sein und erfordert spezielle Kenntnisse.</li>
+<li><strong>Abhängigkeit vom Hostsystem:</strong> Die Leistung und Stabilität der virtuellen Maschinen können von der Leistung und Stabilität des Host-Betriebssystems beeinflusst werden. Außerdem besteht das Risiko, dass wenn das Hostsystem nicht mehr verfügbar ist auch alle VMs auf dem System nicht mehr funktionieren.</li>
+</ul>
+<h2 is-upgraded>Anwendungsfälle:</h2>
+<ul>
+<li><strong>Serverbereitstellung:</strong> Unternehmen können mehrere Server auf einer einzigen physischen Maschine bereitstellen, was die Betriebskosten senkt.</li>
+<li><strong>Entwicklung und Testen:</strong> Entwickler können verschiedene Umgebungen für die Softwareentwicklung und Tests erstellen, ohne physische Hardware bereitstellen zu müssen.</li>
+<li><strong>Cloud Computing:</strong> Cloud-Plattformen verwenden VMs, um skalierbare und flexible Dienste anzubieten.</li>
+</ul>
+<h2 is-upgraded>Schlussfolgerung:</h2>
+<p>VMs sind eine leistungsstarke Technologie, die es ermöglicht, Ressourcen effizient zu nutzen, Flexibilität bietet und Kosten senkt. Durch die Erstellung mehrerer virtueller Maschinen auf einem einzigen Host-System bietet diese Technologie eine Vielzahl von Anwendungsmöglichkeiten für Unternehmen und Entwickler.</p>
+<h2 is-upgraded>Feedback</h2>
+<p>Fragen:</p>
+<ul>
+<li>Mögliche Probleme beim Clonen/Kopieren von VMs?</li>
+<li>Balloon-Treiber?</li>
+<li>Was muss gegeben sein, damit sich die Virtualisierung von Computern finanziell rechnet?</li>
+</ul>
+<p>Anmerkung:</p>
+<ul>
+<li>Bilder wären hier gut gewesen</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[5/12] [Böhm]" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[6/12] [Platzer] Selected Security Buzzwords of the Cloud" duration="0">
+        <p>Im Bereich Cloud-Computing tauchen häufig bestimmte Sicherheits-Buzzwords auf. Das Verständnis dieser Begriffe ist entscheidend, um die Sicherheitslandschaft effektiv zu navigieren. Hier sind einige <strong>wichtige</strong> Buzzwords:</p>
+<h2 is-upgraded>1. Zero Trust</h2>
+<p><strong>Vertraue Niemanden!!!</strong> Zero Trust-Architektur geht davon aus, dass Bedrohungen sowohl von außerhalb als auch von innerhalb des Netzwerks kommen können. Es erfordert eine strenge Identitätsüberprüfung für jede Person und jedes Gerät, das auf Ressourcen zugreifen möchte.</p>
+<h2 is-upgraded>2. Encryption at Rest</h2>
+<p><strong>Konzept</strong>: Datenschutz durch Verschlüsselung während der Speicherung. Stellt sicher, dass Daten für unbefugte Benutzer unlesbar sind, indem sie verschlüsselt werden, wenn sie auf Festplatten gespeichert sind. Wesentlich zum Schutz sensibler Informationen in der Cloud.</p>
+<h2 is-upgraded>3. Encryption in Transit</h2>
+<p><strong>Konzept</strong>: Datenschutz während der Übertragung.<br> Daten werden verschlüsselt, während sie zwischen Servern und Clients übertragen werden. Verhindert Abfangen und Abhören von Daten, die über Netzwerke übertragen werden. <strong>Beispiel:</strong> End-to-End Encryption</p>
+<h2 is-upgraded>4. Identity and Access Management (IAM)</h2>
+<p><strong>Konzept</strong>: Verwaltung von Benutzeridentitäten und deren Zugriffsrechten.<br> IAM-Frameworks stellen sicher, dass die richtigen Personen zur richtigen Zeit aus den richtigen Gründen auf die richtigen Ressourcen zugreifen. Wichtige Komponenten sind Authentifizierung, Autorisierung und Benutzerverwaltung.</p>
+<h2 is-upgraded>5. Multi-Factor Authentication (MFA)</h2>
+<p><strong>Konzept</strong>: Erhöhte Sicherheit durch mehrere Verifikationsschritte. Erfordert zwei oder mehr Verifizierungsfaktoren, um Zugang zu erhalten. Häufige Faktoren sind etwas, das man weiß ( Passwort), etwas, das man hat (Token), und etwas, das man ist (Biometrie).</p>
+<h2 is-upgraded>6. Shared Responsibility Model</h2>
+<p><strong>Konzept</strong>: Aufteilung der Sicherheitsverantwortungen zwischen Cloud-Anbieter und Kunde.<br> Cloud-Anbieter verwalten die Sicherheit der Cloud-Infrastruktur, während Kunden für die Sicherheit ihrer Daten, Identitäten, Anwendungen und Betriebssysteme innerhalb der Cloud verantwortlich sind.</p>
+<h2 is-upgraded>7. Security Information and Event Management (SIEM)</h2>
+<p><strong>Konzept</strong>: Echtzeitanalyse von Sicherheitswarnungen.<br> SIEM-Systeme bieten zentrale Protokollierung und Echtzeitanalyse von Sicherheitswarnungen, die von Anwendungen und Netzwerkhardware generiert werden. Sie helfen dabei, potenzielle Sicherheitsbedrohungen zu erkennen und darauf zu reagieren.</p>
+<h2 is-upgraded>8. Data Loss Prevention (DLP)</h2>
+<p><strong>Konzept</strong>: Schutz sensibler Daten vor unbefugtem Zugriff und Verlust.<br> DLP-Strategien identifizieren, überwachen und schützen Daten in Nutzung, Bewegung und Speicherung. Sie verhindern versehentliche oder böswillige Datenlecks.</p>
+<h2 is-upgraded>9. Endpoint Protection</h2>
+<p><strong>Konzept</strong>: Sicherheitsmaßnahmen für Endgeräte.<br> Schützt Geräte wie Laptops, Smartphones und Tablets vor Bedrohungen. Umfasst Antivirus, Anti-Malware und Firewall-Schutz.</p>
+<h2 is-upgraded>10. API Security</h2>
+<p><strong>Konzept</strong>: Schutz von Application Programming Interfaces (APIs).<br> Stellt sicher, dass APIs sicher genutzt werden, indem Authentifizierung, Autorisierung, Verschlüsselung und Überwachung implementiert werden, um Datenverletzungen und Missbrauch zu verhindern.</p>
+<h2 is-upgraded>Feedback</h2>
+<p>Fragen:</p>
+<ul>
+<li>Mögliche Probleme von SIEM Systemen?</li>
+</ul>
+<p>Anmerkung:</p>
+<ul>
+<li>👍 gute Liste/guter Inhalt</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[7/12] [Marku] Benefits and examples of doing things as Code" duration="0">
+        <p>„Doing things as code&#34; bezieht sich auf die Automatisierung von Prozessen, Konfigurationen und Bereitstellungen mithilfe von Code anstelle manueller Eingriffe.</p>
+<p><em>Clean-up und Ressourcenoptimierung:</em> Durch die Ausführung von Bereinigungsprozessen als Code können nicht benötigte Ressourcen automatisch erkannt und bereinigt werden, was Kosten senkt und die Effizienz verbessert.</p>
+<p><em>Automatisierung durch Infrastruktur als Code (IaC):</em> Durch die Verwendung von Tools wie Terraform, Ansible oder AWS CloudFormation ist es möglich die Infrastruktur als Code zu definieren. Die IaC Automatisierung beschleunigt den Prozess zur Einrichtung von Infrastruktur für Entwicklung, Tests und Produktion und dadurch werden Infrastrukturressourcen wie virtuellen Maschinen, Netzwerken und Speicher reproduzierbar, skalierbar und weniger fehleranfällig.</p>
+<p><em>Kontinuierliche Integration und Bereitstellung (CI/CD):</em> Die Automatisierung von Build-, Test- und Bereitstellungsprozessen mithilfe von CI/CD-Pipelines ermöglicht es schnellere Iterationen durchzuführen und eine höhere Softwarequalität zu gewährleisten. Beliebte Tools wie Jenkins oder GitLab CI kommen im Einsatz.</p>
+<p><em>Versionierung und Testautomatisierung:</em> Die Verwendung von Versionskontrollsystemen wie Git in Verbindung mit Testautomatisierungstools wie Selenium oder JUnit ermöglicht es, Änderungen zu verfolgen, zu überprüfen und automatisierte Tests durchzuführen, um die Softwarequalität sicherzustellen.</p>
+<p><em>Sicherheitsrichtlinie als Code:</em> Definition von Sicherheitsrichtlinien und -konfigurationen mithilfe von Code, um Compliance-Checks, Schwachstellen-Scans und die Durchsetzung von Sicherheitsstandards für Anwendungen und Infrastrukturen zu automatisieren.</p>
+<p><em>Risikominimierung und Wiederhertellbarkeit:</em> Die Verwendung von Code ermöglicht eine präzise Dokumentation und Wiederherstellbarkeit von Systemzuständen. Im Falle eines Fehlers oder Ausfalls ist es möglich schnell auf frühere Versionen zurückgreifen oder den Code anpassen, um Probleme zu beheben, was das Risiko von Ausfallzeiten reduziert und die Wiederherstellbarkeit verbessert.</p>
+<p><em>Konsistenz:</em> „Doing things as code&#34; stellt sicher, dass Prozessen, Konfigurationen und Bereitstellungen die vordefinierten Standards und bewährten Verfahren entsprechen.</p>
+<p><em>Überprüfbarkeit:</em> Automatisierte Prozesse hinterlassen eine klare Spur der durchgeführten Aktionen, was es einfacher macht, Probleme zu überprüfen und zu beheben.</p>
+<p><em>Bessere Zusammenarbeit:</em> Die IAC fördert eine bessere Zusammenarbeit zwischen IT-Teams, indem sie die gleichen Versionskontroll-, Test- und Bereitstellungspraktiken wie Softwareentwickler verwendet. Dadurch können IT-Teams effektiver zusammenarbeiten, die Kommunikation verbessern und das Fehlerrisiko verringern.</p>
+<h2 is-upgraded>Quellen:</h2>
+<ul>
+<li>https://www.linkedin.com/pulse/benefits-iac-infrastructure-management-cloudmatos/</li>
+<li>https://www.ibm.com/de-de/topics/infrastructure-as-code</li>
+<li>https://thorntech.com/infrastructureascodebenefits/</li>
+</ul>
+<h2 is-upgraded>Feedback</h2>
+<p>Fragen:</p>
+<ul>
+<li>CI/CD?</li>
+<li>Nachteile von &#34;as code&#34;?</li>
+</ul>
+<p>Anmerkung:</p>
+<ul>
+<li>Rechtschreibung beachten</li>
+<li>PDF eingereicht, kein Markdown</li>
+<li>Quellen 👍</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[8/12] [Nährer] Role-Based Access Control (RBAC)" duration="0">
+        <p>RBAC ist ein Ansatz zur Zugriffskontrolle, bei dem Berechtigungen an Rollen anstatt an individuelle Benutzer vergeben werden.</p>
+<h2 is-upgraded>Vorteile von RBAC:</h2>
+<ul>
+<li><strong>Einfachheit:</strong> Reduziert die Komplexität der Zugriffsverwaltung, indem Berechtigungen an Rollen zugewiesen werden.</li>
+<li><strong>Skalierbarkeit:</strong> Ermöglicht eine einfache Skalierung der Zugriffsverwaltung, insbesondere in großen Organisationen.</li>
+<li><strong>Sicherheit:</strong> Durch die Zuweisung von Rollen können Berechtigungen granular gesteuert und Missbrauch reduziert werden.</li>
+</ul>
+<h2 is-upgraded>Kernkonzepte von RBAC:</h2>
+<ol type="1">
+<li><strong>Rollen:</strong> Definieren die Gruppen von Benutzern mit ähnlichen Zugriffsrechten.</li>
+<li><strong>Berechtigungen:</strong> Definieren die spezifischen Aktionen, die eine Rolle ausführen kann.</li>
+<li><strong>Benutzerzuweisungen:</strong> Weisen Benutzer bestimmten Rollen zu, um ihnen entsprechende Zugriffsrechte zu gewähren.</li>
+</ol>
+<h2 is-upgraded>Implementierung von RBAC:</h2>
+<ul>
+<li><strong>Rollen definieren:</strong> Identifizieren Sie die verschiedenen Rollen in Ihrer Organisation und die damit verbundenen Berechtigungen.</li>
+<li><strong>Benutzer verwalten:</strong> Weisen Sie Benutzern Rollen zu, basierend auf ihren Aufgaben und Verantwortlichkeiten.</li>
+<li><strong>Berechtigungen zuweisen:</strong> Weisen Sie den Rollen die entsprechenden Berechtigungen basierend auf den Anforderungen zu.</li>
+</ul>
+<h2 is-upgraded>Beispiel:</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Rolle</p>
+</td><td colspan="1" rowspan="1"><p>Berechtigungen</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Administrator</p>
+</td><td colspan="1" rowspan="1"><p>Alle Zugriffsrechte</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Mitarbeiter</p>
+</td><td colspan="1" rowspan="1"><p>Lesen und Schreiben von Daten</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Gast</p>
+</td><td colspan="1" rowspan="1"><p>Lesen von Daten</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Beispiele für RBAC-Systeme:</h2>
+<ol type="1">
+<li><strong>Microsoft Active Directory (AD):</strong> AD bietet umfangreiche Unterstützung für RBAC und ermöglicht die Verwaltung von Benutzerkonten, Gruppen und Berechtigungen in Windows-Umgebungen.</li>
+<li><strong>Amazon Web Services (AWS) IAM:</strong> IAM (Identity and Access Management) von AWS ermöglicht die feine Steuerung von Zugriffsrechten auf AWS-Ressourcen durch die Zuweisung von Rollen, Richtlinien und Berechtigungen.</li>
+<li><strong>Google Cloud IAM:</strong> Ähnlich wie AWS IAM ermöglicht Google Cloud IAM die Verwaltung von Identitäten und Zugriff auf Google Cloud-Ressourcen über Rollen und Richtlinien.</li>
+<li><strong>OpenStack Keystone:</strong> Keystone ist das Identity-Service-Projekt von OpenStack, das RBAC für die Authentifizierung und Autorisierung von Benutzern in OpenStack-basierten Cloud-Infrastrukturen bereitstellt.</li>
+<li><strong>Oracle Identity Management:</strong> Oracle bietet eine umfangreiche Identity-Management-Lösung, die RBAC-Funktionen für die Verwaltung von Benutzern, Gruppen und Zugriffsrechten in Oracle-Produkten und -Systemen bereitstellt.</li>
+<li><strong>IBM Security Identity Manager:</strong> Dieses Produkt von IBM bietet Funktionen für Identitätsverwaltung und Zugriffskontrolle, einschließlich RBAC-Funktionen zur Definition von Rollen und Berechtigungen.</li>
+</ol>
+<h2 is-upgraded>Fazit:</h2>
+<p>RBAC bietet eine effektive Methode zur Verwaltung von Zugriffsrechten in komplexen Systemen, indem es die Zugriffsverwaltung vereinfacht, die Sicherheit erhöht und die Skalierbarkeit verbessert.</p>
+<h2 is-upgraded>Feedback</h2>
+<p>Fragen:</p>
+<ul>
+<li>IAM?</li>
+<li>Authentifizierung und Autorisierung?</li>
+</ul>
+<p>Anmerkung:</p>
+<ul>
+<li>bei ChatGPT Formulierungen im Passiv wählen</li>
+<li>Gruppen sollten Rollen erhalten, nicht Benutzer</li>
+<li>Beispiele 👍</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[9/12] [Kirschner]" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[10/12] [Ivancsits] Infrastructure as Code (IaC) - Überblick" duration="0">
+        <h2 is-upgraded>Was ist IaC?</h2>
+<p>Infrastructure as Code (IaC) bedeutet, dass wir unsere IT-Infrastruktur mithilfe von Code verwalten. Anstatt manuell Einstellungen vorzunehmen, schreiben wir Code, der automatisch alles erledigt. Somit können Konfigurationen schneller und konsistenter erledigt werden.</p>
+<h2 is-upgraded>Vorteile von IaC</h2>
+<ul>
+<li><strong>Skalierbarkeit:</strong> Ermöglicht die einfache Skalierung von Infrastrukturressourcen, indem sie wiederholbare und konsistente Bereitstellungen ermöglicht.</li>
+<li><strong>Konsistenz:</strong> Garantiert eine konsistente Konfiguration der Infrastruktur über verschiedene Umgebungen hinweg.</li>
+<li><strong>Versionierung:</strong> Ermöglicht die Versionierung der Infrastrukturkonfiguration, was die Nachverfolgbarkeit und Wiederherstellbarkeit verbessert.</li>
+<li><strong>Schnelligkeit:</strong> Beschleunigt die Bereitstellung von Infrastrukturressourcen durch Automatisierung und Wiederverwendung von Code.</li>
+</ul>
+<h2 is-upgraded>Tools</h2>
+<ul>
+<li><strong>Terraform:</strong> Es erlaubt uns, Infrastruktur über verschiedene Cloud-Provider hinweg zu verwalten.</li>
+<li><strong>Ansible:</strong> Damit können wir Server konfigurieren und verwalten, ohne zusätzliche Software installieren zu müssen.</li>
+<li><strong>Pulumi:</strong> ist ein IaC-Tool, das es Entwicklern ermöglicht, Infrastruktur mit beliebten Programmiersprachen wie Python und JavaScript definieren.</li>
+</ul>
+<h2 is-upgraded>Best Practices für IaC</h2>
+<ul>
+<li><strong>Tests:</strong> Implementieren Sie automatisierte Tests für Ihre Infrastrukturkonfiguration, um die Zuverlässigkeit sicherzustellen.</li>
+<li><strong>Code-Review:</strong> Führen Sie Code-Reviews für Ihre IaC-Konfiguration durch, um Best Practices zu fördern und potenzielle Probleme frühzeitig zu identifizieren.</li>
+</ul>
+<h2 is-upgraded>Fazit</h2>
+<p>IaC bietet eine effiziente Möglichkeit, Infrastrukturressourcen zu verwalten und zu automatisieren. Durch die Verwendung von Code können Teams die Bereitstellung beschleunigen, die Konsistenz verbessern und die Skalierbarkeit ihrer Infrastruktur erhöhen.</p>
+<h2 is-upgraded>Feedback</h2>
+<p>Fragen:</p>
+<ul>
+<li>Unterschied von &#34;Infrastruktur as Code&#34; und &#34;Configuration as Code&#34;?</li>
+<li>Wie funktioniert Versionierung bei IaC?</li>
+<li>Warum können mit Ansible Server konfiguriert und verwaltet werden, ohne zusätzliche Software installieren zu müssen?</li>
+</ul>
+<p>Anmerkung:</p>
+<ul>
+<li>ChatGPT Output im Passiv</li>
+<li>👍 best practices &amp; tools</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[11/12] [Dshandshgava] IaaS/PaaS/SaaS" duration="0">
+        <p>IaaS, PaaS und SaaS sind die drei beliebtesten Arten von Cloud-Service-Angeboten. Sie werden manchmal als Cloud-Service-Modelle oder Cloud-Computing-Service-Modelle bezeichnet. &#34;As-a-Service&#34; bedeutet im Allgemeinen ein Cloud-Computing-Dienst, der von einem Drittanbieter bereitgestellt wird. Mit jeder Art von Cloud Computing muss der Kunde immer weniger Infrastruktur vor Ort verwalten.</p>
+<p>Die lokale IT-Infrastruktur stellt die größte Verantwortung für den Benutzer dar. Was Cloud-Computing ermöglicht, ist die Zuweisung eines, mehrerer oder aller Teile der Infrastruktur an die Verwaltung durch einen Drittanbieter, wodurch man sich auf andere Dinge konzentrieren kann. IaaS, PaaS und SaaS schließen sich nicht gegenseitig aus. Viele mittelständische Unternehmen nutzen mehr als eine dieser Optionen, und die meisten großen Unternehmen nutzen alle drei.</p>
+<h2 is-upgraded>IaaS (Infrastructure-as-a-Service)</h2>
+<p>IaaS ist ein Pay-as-you-go-Service, bei dem ein Drittanbieter Infrastrukturdienste wie Speicherung und Virtualisierung über das Internet bereitstellt, je nach Bedarf über eine Cloud. Der Benutzer ist für das Betriebssystem sowie für Daten, Anwendungen, Middleware und Laufzeiten verantwortlich, während der Anbieter Zugang zu Netzwerk, Servern, Virtualisierung und Speicherung sowie deren Verwaltung bietet. Typischerweise können IaaS-Kunden zwischen VMs wählen, die auf gemeinsam genutzter physischer Hardware gehostet sind ( der Cloud-Dienstanbieter verwaltet die Virtualisierung) oder Bare-Metal-Server auf dedizierter physischer Hardware. Kunden können die Server und Infrastrukturressourcen über ein grafisches Dashboard oder über Anwendungsprogrammierschnittstellen (APIs) bereitstellen, konfigurieren und betreiben.</p>
+<p>Im Vergleich zur traditionellen IT bietet IaaS Kunden mehr Flexibilität beim Aufbau von Rechenressourcen bei Bedarf und bei der Skalierung nach oben oder unten in Reaktion auf Spitzen oder Verlangsamungen im Verkehr. IaaS ermöglicht es Kunden, die Vorabkosten und den Overhead für den Kauf und die Wartung eines eigenen Rechenzentrums zu vermeiden. Es beseitigt auch den ständigen Kompromiss zwischen dem Kauf von überschüssiger Vor-Ort-Kapazität, um Spitzen zu bewältigen, und der schlechten Leistung oder Ausfällen, die auftreten können, wenn nicht genügend Kapazität für unvorhergesehene Verkehrsspitzen oder -wachstum vorhanden ist.</p>
+<p>Die Hauptnachteile von IaaS sind die Möglichkeit von Sicherheitsproblemen des Anbieters, Mehrmandantensysteme, bei denen der Anbieter Infrastrukturressourcen mit mehreren Kunden teilen muss, und die Zuverlässigkeit des Dienstes. Diese Nachteile können vermieden werden, indem ein zuverlässiger und vertrauenswürdiger Anbieter mit einer soliden Geschichte und Reputation ausgewählt wird.</p>
+<p>Öffentliche Cloud-Anbieter wie AWS, Microsoft Azure und Google Cloud sind Beispiele für IaaS.</p>
+<h2 is-upgraded>PaaS (Platform-as-a-Service)</h2>
+<p>Bei PaaS hostet ein Anbieter die Hardware und Software auf seiner eigenen Infrastruktur und liefert diese Plattform dem Benutzer als integrierte Lösung, Lösungsstapel oder Dienst über eine Internetverbindung. PaaS ist hauptsächlich nützlich für Entwickler und Programmierer in dem es dem Benutzer ermöglicht, seine eigenen Apps zu entwickeln, auszuführen und zu verwalten, ohne die Infrastruktur oder Plattform bauen und pflegen zu müssen, die normalerweise mit dem Prozess verbunden ist. Sie schreiben den Code, entwickeln und verwalten ihre Apps, aber ohne sich um Softwareupdates oder Hardwarewartung kümmern zu müssen. Die Umgebung zum Entwickeln und Bereitstellen wird für die Kunden bereitgestellt. PaaS ist eine Möglichkeit, mit der Entwickler ein Framework erstellen können, um ihre webbasierten Anwendungen anzupassen und zu erstellen. Entwickler können integrierte Softwarekomponenten verwenden, um ihre Anwendungen zu erstellen, was die Menge an Code reduziert, den sie selbst schreiben müssen.</p>
+<p>Der Hauptvorteil von PaaS besteht darin, dass es Kunden ermöglicht, Anwendungen schneller und kostengünstiger zu entwickeln, zu testen, bereitzustellen, auszuführen, zu aktualisieren und zu skalieren, als wenn sie ihre eigene lokale Plattform aufbauen und verwalten müssten.</p>
+<p>Einige Beispiele für PaaS sind AWS Elastic Beanstalk, Heroku und Red Hat OpenShift.</p>
+<h2 is-upgraded>SaaS (Software-as-a-Service)</h2>
+<p>Auch bekannt als Cloud-Anwendungsdienste, ist SaaS die umfassendste Form von Cloud-Computing-Diensten, die eine gesamte Anwendung, die von einem Anbieter verwaltet wird, über einen Webbrowser bereitstellen. Benutzer zahlen eine monatliche oder jährliche Gebühr, um eine vollständige Anwendung über einen Webbrowser, Desktop-Client oder eine mobile App zu nutzen. Die Anwendung und die gesamte Infrastruktur, die für deren Bereitstellung erforderlich ist – Server, Speicher, Netzwerk, Middleware, Anwendungssoftware, Datenspeicherung – werden vom SaaS-Anbieter gehostet und verwaltet. Software-Updates, Fehlerkorrekturen und allgemeine Softwarewartung werden vom Anbieter durchgeführt und der Benutzer verbindet sich mit der App über ein Dashboard oder eine API. Es ist keine Installation der Software auf einzelnen Maschinen erforderlich und der Gruppenzugriff auf das Programm ist reibungsloser und zuverlässiger. Der Hauptvorteil von SaaS besteht darin, dass es alle Infrastruktur- und Anwendungsverwaltungsaufgaben an den SaaS-Anbieter auslagert. Alles, was der Benutzer tun muss, ist ein Konto zu erstellen, die Gebühr zu zahlen und mit der Nutzung der Anwendung zu beginnen. Der Anbieter übernimmt alles andere, von der Wartung der Serverhardware und -software bis hin zur Verwaltung des Benutzerzugriffs und der Sicherheit, der Speicherung und Verwaltung von Daten, der Implementierung von Upgrades und Patches und mehr.</p>
+<p>SaaS ist eine gute Option für kleine Unternehmen, die nicht über das Personal oder die Bandbreite verfügen, um die Installation und Aktualisierung von Software zu bewältigen, sowie für Anwendungen, die nicht viel Anpassung erfordern oder nur periodisch verwendet werden. Was SaaS dem Benutzer an Zeit und Wartung spart, könnte jedoch Kontrolle, Sicherheit und Leistung kosten, daher ist es wichtig.</p>
+<p>Beispiele für SaaS sind Dropbox, Salesforce, Google Apps und Red Hat Insights.</p>
+<p class="image-container"><img alt="Container1" src="img/466f9d79eeaf66c.png"><img alt="Container1" src="img/109b7efc616b2607.png"></p>
+<h2 is-upgraded>Quellen</h2>
+<p>https://www.redhat.com/en/topics/cloud-computing/iaas-vs-paas-vs-saas https://www.ibm.com/topics/iaas-paas-saas</p>
+<h2 is-upgraded>Feedback</h2>
+<p>Fragen:</p>
+<ul>
+<li>Middleware?</li>
+<li>Red Hat Insights?</li>
+</ul>
+<p>Anmerkung:</p>
+<ul>
+<li>Bilder zukünftig auch einfügen, nicht nur in zip geben</li>
+<li>Quellen 👍</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[12/12] [Vedanayagam]" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Containers Overview" duration="0">
+        <p>&#34;Container-Technologie ist eine Methode der Virtualisierung, bei der Anwendungen zusammen mit ihren Abhängigkeiten in leichten, portablen und isolierten Umgebungen ausgeführt werden, die den Kernel des Host-Betriebssystems gemeinsam nutzen.&#34; – ChatGPT</p>
+<ul>
+<li>OS-Virtualisierung!</li>
+<li>Container Runtime/Engine anstatt Hypervisor</li>
+<li>Schneller/Schlanker aber weniger mächtig (zB HW Unterstützung)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Vertreter der Container Technologie" duration="0">
+        <p>Aktuell sprechen wir meist von &#34;Docker&#34; oder OCI Container.</p>
+<p class="image-container"><img alt="Container1" src="img/ab57dfbfe956337c.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Bare Metal vs VM vs Container" duration="0">
+        <p class="image-container"><img alt="Container2" src="img/a7cbc720fe343389.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Docker Architecture" duration="0">
+        <p class="image-container"><img alt="Container3" src="img/246d3ce0667c15f4.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="OCI Images" duration="0">
+        <ul>
+<li>VM Images sind HDD Snapshots die booten</li>
+<li>Container Images sind Umgebungen in denen ein Prozess startet</li>
+</ul>
+<p>Images sind definiert strukturierte Verzeichnisse (und Archive daraus), die aus bestimmten Files und Unterverzeichnissen verstehen.</p>
+<ul>
+<li>Daten (bins/libs)</li>
+<li>Konfiguration</li>
+</ul>
+<p class="image-container"><img alt="Image" src="img/a58bf4d44ba86a16.png"></p>
+<pre><code language="language-shell" class="language-shell">$ cd example.com/app/
+$ find . -type f
+./index.json
+./oci-layout
+./blobs/sha256/3588d02542238316759cbf24502f4344ffcc8a60c803870022f335d1390c13b4
+./blobs/sha256/4b0bc1c4050b03c95ef2a8e36e25feac42fd31283e8c30b3ee5df6b043155d3c
+./blobs/sha256/7968321274dc6b6171697c33df7815310468e694ac5be0ec03ff053bb135e768
 </code></pre>
-<pre><code language="language-html" class="language-html">&lt;!DOCTYPE html&gt;
+<p>index.json</p>
+<pre><code language="language-json" class="language-json">[
+  {
+    &#34;Id&#34;: &#34;sha256:760b7cbba31e196288effd2af6924c42637ac5e0d67db4de6309f24518844676&#34;,
+    &#34;RepoTags&#34;: [
+      &#34;nginx:latest&#34;
+    ],
+    &#34;RepoDigests&#34;: [
+      &#34;nginx@sha256:c26ae7472d624ba1fafd296e73cecc4f93f853088e6a9c13c0d52f6ca5865107&#34;
+    ],
+    &#34;Parent&#34;: &#34;&#34;,
+    &#34;Comment&#34;: &#34;buildkit.dockerfile.v0&#34;,
+    &#34;Created&#34;: &#34;2024-02-14T18:24:57Z&#34;,
+    &#34;DockerVersion&#34;: &#34;&#34;,
+    &#34;Author&#34;: &#34;&#34;,
+    &#34;Config&#34;: {
+      &#34;ExposedPorts&#34;: {
+        &#34;80/tcp&#34;: {}
+      },
+      &#34;Env&#34;: [
+        &#34;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&#34;,
+        &#34;NGINX_VERSION=1.25.4&#34;,
+        &#34;NJS_VERSION=0.8.3&#34;,
+        &#34;PKG_RELEASE=1~bookworm&#34;
+      ],
+      &#34;Cmd&#34;: [
+        &#34;nginx&#34;,
+        &#34;-g&#34;,
+        &#34;daemon off;&#34;
+      ],
+      &#34;WorkingDir&#34;: &#34;&#34;,
+      &#34;Entrypoint&#34;: [
+        &#34;/docker-entrypoint.sh&#34;
+      ],
+      &#34;Labels&#34;: {
+        &#34;maintainer&#34;: &#34;NGINX Docker Maintainers &lt;docker-maint@nginx.com&gt;&#34;
+      },
+      &#34;StopSignal&#34;: &#34;SIGQUIT&#34;
+    },
+    &#34;Architecture&#34;: &#34;arm64&#34;,
+    &#34;Os&#34;: &#34;linux&#34;,
+    &#34;Size&#34;: 192018334,
+    &#34;RootFS&#34;: {
+      &#34;Type&#34;: &#34;layers&#34;,
+      &#34;Layers&#34;: [
+        &#34;sha256:644fed2a38987e9c2e23a98fbd38f898ab6ab64c8473b9123bdd970bb77c1437&#34;,
+        &#34;sha256:a4a7249377c4083d36d2ec08b102aea75cdc04179bf12fdbb39fae2f756c8b01&#34;,
+        &#34;sha256:3ffa25f4073e11002b35800377340182a61d1454dba950dae07ab8e0bd1b55b0&#34;
+      ]
+    },
+    &#34;Metadata&#34;: {
+      &#34;LastTagTime&#34;: &#34;0001-01-01T00:00:00Z&#34;
+    }
+  }
+]
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Building Container Images / Dockerfile" duration="0">
+        <p><img alt="Image" src="img/86fe716733222be3.png"> Source: https://docs.docker.com/build/guide/layers/</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Demo: NGINX Dockerfile" duration="0">
+        <pre><code language="language-html" class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;en&#34;&gt;
-  &lt;head&gt;
+&lt;head&gt;
     &lt;meta charset=&#34;UTF-8&#34;&gt;
     &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
     &lt;title&gt;Welcome to My Static Site&lt;/title&gt;
     &lt;style&gt;
-      body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        h1 { color: #333366; }
-        p { color: #666; font-size: 1.2em; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333366;
+        }
+
+        p {
+            color: #666;
+            font-size: 1.2em;
+        }
     &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;h1&gt;Welcome to My Static Site&lt;/h1&gt;
-    &lt;p&gt;This is a simple static website served by Nginx inside a Docker container.&lt;/p&gt;
+&lt;h1&gt;Welcome to My Static Site&lt;/h1&gt;
+&lt;p&gt;This is a simple static website served by Nginx inside a Docker container.&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
 <pre><code language="language-dockerfile" class="language-dockerfile"># Use the Nginx image from Docker Hub as the base image
-FROM nginx:alpine
+FROM nginxinc/nginx-unprivileged:latest
 
 # Copy the static website files to the Nginx server
 COPY index.html /usr/share/nginx/html/index.html
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 8080
 
 # Start Nginx when the container launches
 CMD [&#34;nginx&#34;, &#34;-g&#34;, &#34;daemon off;&#34;]
 </code></pre>
-<pre><code language="language-bash" class="language-bash">docker build -t yourname/nginx-static-site .
-docker run -d -p 8080
+<pre><code language="language-bash" class="language-bash">docker build -t my-website:latest .
+docker run -p 8080:8080 my-website:latest
 </code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Teaser: Container in real life" duration="0">
+        <ul>
+<li>Multi-Host Containers: Kubernetes</li>
+<li>Automate everything: Storage, Networking, Zertifikate, Routing, App Lifecycle,..</li>
+</ul>
+<p>CNCF Projekte - in Produktion</p>
+<p class="image-container"><img alt="Image" src="img/5de18d5d5e56f8cd.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Cloud Native Austria / Kubernetes Community Days" duration="0">
+        <ul>
+<li>https://kcdaustria.at/</li>
+</ul>
+<p class="image-container"><img alt="Image" src="img/8fc17e5bfac83b3a.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Recap" duration="0">
+        <p class="image-container"><img alt="Image" src="img/f0b21bade21a4989.png"></p>
 
 
       </google-codelab-step>
