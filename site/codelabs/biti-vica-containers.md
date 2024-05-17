@@ -129,9 +129,8 @@ Anmerkung:
 
 ## [3/12] [Raab] HCI
 
-#HW
+![Container1](./img/traditional-converged-hyperconverged.jpg)
 
-![[traditional-converged-hyperconverged.jpg]]
 ### Überblick
 
 Hyperkonvergente Infrastruktur (HCI) ist eine softwaredefinierte IT-Infrastruktur, die Compute, Speicher und Netzwerk in ein einziges System integriert. Sie abstrahiert Hardware-Ressourcen und verwaltet sie über Software, um eine hoch skalierbare und flexible Infrastrukturlösung bereitzustellen.
@@ -482,7 +481,40 @@ Anmerkung:
 - Gruppen sollten Rollen erhalten, nicht Benutzer
 - Beispiele 👍
 
-## [9/12] [Kirschner]
+## [9/12] [Kirschner] Goverance und Compliance
+
+![beispiel bild](./img/gr.png)
+
+## **Goverance**
+umfasst die Entwicklung und Durchsetzung von Richtlinien, Verfahren und Prozessen, um sicherzustellen, dass die IT-Ressourcen eines Unternehmens effektiv und verantwortungsbewusst genutzt werden. <br>
+* <span style="color:blue">Sicherheit</span>
+ <br>
+Zugriffskontrollen, Verschlüsselung, Überwachung
+* <span style="color:blue">Ressourcenverwaltung</span>
+ <br>
+Virtuelle Maschinen: Ressourcenskalierung
+ <br>
+* <span style="color:blue">Audits</span> <br>
+Regelmäßige Prüfungen um Sicherheitslücken aufzudecken
+
+<br>
+
+## **Compliance** <br>
+bezieht sich auf die Einhaltung externer und interner Vorschriften, Richtlinien und Standards. <br> 
+* <span style="color:blue">Datenschutz</span>
+ <br>
+Obwohl der Cloud-Anbieter Infrastruktur und Sicherheitsmaßnahmen bereitstellt, bleibt die Verantwortung für die Daten beim Nutzer <br> <br>
+Das österreichische Datenschutzgesetz (DSG) setzt die Vorgaben der DSGVO um und enthält spezifische nationale Bestimmungen zum Datenschutz <br> <br>
+Safe-Harbour-Abkommen und EU-US-Datenschutzschild gelten nicht mehr als gültige transantlantischen Datentransfer <br>
+Herausforderung: Standardvertragsklauseln (Standard Contractual Clauses, SCCs), Verbindliche interne Unternehmensvorschriften (Binding Corporate Rules, BCRs)
+
+
+* <span style="color:blue">Vertragsgestaltung</span> 
+<br>
+Schon zu Beginn müssen möglichen Formen der Vertragsbeendigung und der dazugehörigen Transition definiert werden <br> <br>
+Gesetzliche Vorschriften legen vor wie Daten gespeichert werden dürfen <br> <br>
+Aufsichtsrechtliche Anforderungen können je nach Branche varieren. Bsp: Banken und Kreditinstitute müssen zusätzliche Bedingungen erfüllen.  <br>
+Zahlungskartenindustrie: Payment Card Industry Data Security Standard (PCI-DSS)
 
 ## [10/12] [Ivancsits] Infrastructure as Code (IaC) - Überblick
 
@@ -637,7 +669,101 @@ Anmerkung:
 - Bilder zukünftig auch einfügen, nicht nur in zip geben
 - Quellen 👍
 
-## [12/12] [Vedanayagam]
+## [12/12] [Vedanayagam] Cloud-Init
+
+## Cloud-Init: Automating Cloud Instance Initialization
+
+### Was ist Cloud-Init?
+
+Ein Open-Source-Tool zur Konfiguration und Anpassung von Cloud-Instanzen während des ersten Starts. Es automatisiert Aufgaben, die traditionell manuell ausgeführt werden, und vereinfacht so den Bereitstellungsprozess.
+
+### Funktionsweise von Cloud-Init:
+
+1. **Umgebungserkennung:** Cloud-Init identifiziert die Cloud-Plattform auf der die Instanz läuft.
+2. **Metadatenabruf:** Es ruft vom Cloud-Anbieter bereitgestellte Metadaten ab, einschließlich Netzwerkeinstellungen und Benutzeranmeldeinformationen.
+3. **Systemkonfiguration:** Basierend auf den abgerufenen Daten und den vom Benutzer bereitgestellten Konfigurationen führt Cloud-Init Aktionen wie:
+
+    * Hostnamen festlegen
+    * Netzwerkschnittstellen konfigurieren
+    * Benutzer und Gruppen hinzufügen
+    * Pakete installieren
+    * Benutzerdefinierte Skripte ausführen
+
+
+### Verwendung von Cloud-Init:
+
+Verwendet Cloud-Config-Dateien im YAML-Format, um die gewünschten Konfigurationen zu definieren. Diese Dateien können während des Starts der Instanz an den Cloud-Anbieter hochgeladen oder direkt in die Instanz injiziert werden.
+
+### Cloud-Init in der Cloud:
+
+* **Konsistenz und Skalierbarkeit:** Ermöglicht die konsistente Konfiguration und Skalierung von Cloud-Instanzen, was für große und dynamische Cloud-Umgebungen entscheidend ist.
+* **Automatisierte Updates:** Kann verwendet werden, um Softwarepakete und Systemkonfigurationen automatisch zu aktualisieren, wodurch die Sicherheit und Stabilität von Cloud-Instanzen gewährleistet wird.
+* **Hybrid-Cloud-Unterstützung:** Sowohl in öffentlichen als auch in privaten Clouds eingesetzt werden und ermöglicht so die Verwaltung von Hybrid-Cloud-Umgebungen.
+
+### Cloud-Init auf verschiedenen Plattformen
+
+#### Amazon Web Services (AWS)
+
+Unterstützt die Anpassung von EC2-Instanzen während des Starts. Verwendungszwecke für Cloud-Init:
+
+* SSH-Schlüssel einzurichten
+* Software-Pakete zu installieren und zu konfigurieren
+* EC2-Instanz-Metadaten abzurufen und zu verwenden
+* Benutzerdefinierte Skripte auszuführen
+
+AWS stellt benutzerdefinierte AMIs (Amazon Machine Images) zur Verfügung, die Cloud-Init enthalten, um eine nahtlose Integration zu ermöglichen.
+
+#### Google Cloud Platform (GCP)
+
+Instanzinitialisierung von Compute Engine-VMs verwendet und ermöglicht:
+
+* Abruf von Metadaten aus der Google-Metadaten-API
+* Konfiguration von Netzwerkeinstellungen
+* Installation und Konfiguration von Softwarepaketen
+* Ausführung von benutzerdefinierten Skripten während des ersten Starts
+
+GCP bietet Startskripte und benutzerdefinierte Images an, die Cloud-Init unterstützen.
+
+#### Microsoft Azure
+
+ Verwaltung und Konfiguration von Linux-VMs und mit Cloud Init kann man:
+
+* Azure-spezifische Metadaten abrufen
+* Netzwerkschnittstellen konfigurieren
+* SSH-Schlüssel und andere Benutzeranmeldeinformationen einrichten
+* Software-Pakete installieren und konfigurieren
+
+Azure bietet vorkonfigurierte Images mit Cloud-Init-Unterstützung, um die nahtlose Integration und Verwaltung von VM-Instanzen zu erleichtern.
+
+### Abbildung Cloud-Init
+
+![Cloud-Init Architektur](./img/cloud-init-architecture.png)
+
+### Vorteile von Cloud-Init:
+
+* **Automatisierung:** Vereinfacht die anfängliche Einrichtung des Servers und eliminiert repetitive Aufgaben.
+* **Konsistenz:** Stellt sicher, dass alle Instanzen mit derselben Konfiguration bereitgestellt werden.
+* **Flexibilität:** Unterstützt verschiedene Cloud-Plattformen und Konfigurationsoptionen über Cloud-Config-Dateien.
+* **Sicherheit:** Ermöglicht ein sicheres Bootstrapping durch Injektion von SSH-Schlüsseln während des Starts.
+
+### Nachteile von Cloud-Init:
+
+* **Eingeschränkte Fehlerdiagnose:** Fehler in Cloud-Init-Konfigurationen können schwer zu diagnostizieren sein, da die Protokollierung und Fehlermeldungen nicht immer klar oder ausführlich genug sind.
+
+* **Anbieterabhängigkeit:** Cloud-Init ist abhängig von den Metadaten und Diensten des Cloud-Anbieters, was zu einer gewissen Anbieterbindung führen kann.
+
+* **Updates und Wartung:** Die Wartung und Aktualisierung von Cloud-Init-Konfigurationen kann aufwendig sein, insbesondere wenn sich die Anforderungen ändern oder neue Versionen von Cloud-Init veröffentlicht werden.
+
+### Cloud-Init vs. Andere Tools:
+
+* **Chef:** Chef ist ein Configuration-Management-Tool, welches komplexer als Cloud-Init und erfordert mehr Konfiguration und Know-how.
+* **Ansible:** Ansible ist benutzerfreundlicher als Chef, aber nicht so ausgereift wie Cloud-Init für die Cloud-Initialisierung.
+
+### Fazit:
+
+Cloud-Init hat sich als unverzichtbares Tool für die **Automatisierung** und **Verwaltung** von Cloud-Instanzen etabliert. Es trägt maßgeblich zur **Effizienz** und **Skalierbarkeit** in Cloud-Umgebungen bei und wird als Standardlösung für die Cloud-Initialisierung angesehen.
+
+
 
 ## Containers Overview
 
