@@ -485,7 +485,7 @@ Anmerkung:
 
 ![beispiel bild](./img/gr.png)
 
-## **Goverance**
+### **Goverance**
 umfasst die Entwicklung und Durchsetzung von Richtlinien, Verfahren und Prozessen, um sicherzustellen, dass die IT-Ressourcen eines Unternehmens effektiv und verantwortungsbewusst genutzt werden. <br>
 * <span style="color:blue">Sicherheit</span>
  <br>
@@ -499,7 +499,7 @@ Regelmäßige Prüfungen um Sicherheitslücken aufzudecken
 
 <br>
 
-## **Compliance** <br>
+### **Compliance** <br>
 bezieht sich auf die Einhaltung externer und interner Vorschriften, Richtlinien und Standards. <br> 
 * <span style="color:blue">Datenschutz</span>
  <br>
@@ -670,8 +670,6 @@ Anmerkung:
 - Quellen 👍
 
 ## [12/12] [Vedanayagam] Cloud-Init
-
-## Cloud-Init: Automating Cloud Instance Initialization
 
 ### Was ist Cloud-Init?
 
