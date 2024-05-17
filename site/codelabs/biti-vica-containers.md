@@ -28,7 +28,49 @@ Welcome to Containers :-)
 - [KodeKloud](https://kodekloud.com/)
 - [Linux Foundation LFS151x](https://training.linuxfoundation.org/training/introduction-to-cloud-infrastructure-technologies/)
 
-## [1/12] [Sieber]
+## [1/12] [Sieber] Terraform
+
+**Was ist Terraform?**
+Terraform ist ein Open-Source-Infrastruktur-als-Code (IaC) Tool, das von HashiCorp entwickelt wurde. Es ermöglicht Nutzern, Infrastruktur auf einfache Weise zu definieren, bereitzustellen und zu verwalten. Durch die Verwendung von deklarativen Konfigurationsdateien kann Terraform verschiedene Cloud-Dienste und Ressourcen wie virtuelle Maschinen, Netzwerke und Datenbanken orchestrieren.
+
+**Hauptmerkmale:**
+1. **Deklarative Konfiguration:**
+   Terraform verwendet eine deklarative Sprache namens HashiCorp Configuration Language (HCL), um die gewünschte Infrastruktur zu definieren. Anstatt Schritt für Schritt zu beschreiben, wie Ressourcen erstellt werden sollen, gibt der Nutzer den Endzustand an, und Terraform kümmert sich um die Umsetzung.
+
+2. **Multi-Cloud und Hybrid-Cloud-Unterstützung:**
+   Terraform unterstützt eine Vielzahl von Cloud-Anbietern wie AWS, Azure, Google Cloud, sowie On-Premises-Lösungen und bietet damit eine einheitliche Schnittstelle für das Management unterschiedlicher Infrastrukturumgebungen.
+
+3. **Planungs- und Änderungsmanagement:**
+   Mit Terraform können Nutzer geplante Änderungen überprüfen, bevor sie angewendet werden. Der `terraform plan` Befehl zeigt eine Vorschau der bevorstehenden Änderungen, während `terraform apply` die tatsächlichen Änderungen an der Infrastruktur vornimmt.
+
+4. **Modularität und Wiederverwendbarkeit:**
+   Terraform unterstützt die Erstellung von Modulen, die wiederverwendbare Konfigurationskomponenten darstellen. Dies fördert die DRY-Prinzipien (Don't Repeat Yourself) und erleichtert die Verwaltung komplexer Infrastrukturen.
+
+**Vorteile von Terraform:**
+- **Automatisierung und Effizienz:** Durch die Automatisierung der Infrastrukturverwaltung reduziert Terraform manuelle Eingriffe und minimiert menschliche Fehler.
+- **Konsistenz und Wiederholbarkeit:** Da die Infrastruktur als Code behandelt wird, können Konfigurationen versioniert und wiederholt bereitgestellt werden.
+- **Zusammenarbeit:** Teams können gemeinsam an denselben Terraform-Dateien arbeiten und Änderungen durch Versionskontrollsysteme wie Git nachverfolgen.
+- **Skalierbarkeit:** Terraform erleichtert die Verwaltung von Infrastrukturen in großem Maßstab und unterstützt die schnelle Anpassung an wachsende Anforderungen.
+
+**Herausforderungen:**
+- **Einarbeitungszeit:** Die Lernkurve für Terraform kann steil sein, insbesondere für Nutzer, die neu in der IaC-Welt sind.
+- **Komplexität bei großen Projekten:** Bei sehr umfangreichen Infrastrukturprojekten kann das Management der Terraform-Dateien und -Module komplex werden.
+
+**Anwendungsfälle:**
+- **Cloud-Migration:** Automatisierte Bereitstellung und Verwaltung von Ressourcen in der Cloud.
+- **DevOps:** Integration in CI/CD-Pipelines zur kontinuierlichen Bereitstellung und Verwaltung von Infrastruktur.
+- **Disaster Recovery:** Schnelle Wiederherstellung von Infrastruktur durch reproduzierbare Konfigurationsdateien.
+
+### Feedback
+
+Fragen:
+
+- Was bedeutet "open source"? Warum ist Terraform zzt. ein brennendes Beispiel in der FOSS Domäne?
+
+Anmerkung:
+
+- Bilder wären hier gut gewesen
+- Zusammenfassung/Erklärung passt gut
 
 ## [2/12] [Scheifinger] What does "Cloud Native" mean?
 
@@ -85,7 +127,54 @@ Anmerkung:
 - siehe [Cloud Native Definition CNCF](https://github.com/cncf/toc/blob/main/DEFINITION.md)
 - 👍 Trends/Beispiele
 
-## [3/12] [Raab]
+## [3/12] [Raab] HCI
+
+#HW
+
+![[traditional-converged-hyperconverged.jpg]]
+### Überblick
+
+Hyperkonvergente Infrastruktur (HCI) ist eine softwaredefinierte IT-Infrastruktur, die Compute, Speicher und Netzwerk in ein einziges System integriert. Sie abstrahiert Hardware-Ressourcen und verwaltet sie über Software, um eine hoch skalierbare und flexible Infrastrukturlösung bereitzustellen.
+
+&nbsp
+### Hauptkomponenten
+
+- **Compute:** Virtualisierte Rechenressourcen, verwaltet durch einen Hypervisor wie VMware vSphere oder Microsoft Hyper-V.
+- **Speicher:** Softwaredefinierte Speicher-Pools, aggregiert aus lokalen Speichergeräten über alle Knoten im HCI-Cluster.
+- **Netzwerk:** Virtualisierte Netzwerkressourcen zur Kommunikation zwischen den Knoten und externen Netzwerken.
+
+&nbsp
+### Vorteile
+
+- **Einfachheit:** Konsolidiert Hardware und Managementaufgaben in einer einzigen Plattform und reduziert so die Komplexität.
+- **Skalierbarkeit:** Einfaches Skalieren durch Hinzufügen von Knoten zum Cluster, um Leistungs- und Kapazitätswachstum sicherzustellen.
+- **Flexibilität:** Ermöglicht agile Ressourcenzuweisung und Workload-Migration über die Infrastruktur hinweg.
+- **Widerstandsfähigkeit:** Integrierte Redundanz- und Datenreplikationsmechanismen verbessern den Datenschutz und die hohe Verfügbarkeit.
+
+&nbsp
+### Anwendungsfälle
+
+- **Virtualisierung:** Ausführen von virtuellen Maschinen und Anwendungen in einer hoch effizienten und konsolidierten Umgebung.
+- **Private Cloud:** Aufbau von privaten Cloud-Umgebungen mit integriertem Compute, Speicher und Netzwerk.
+- **Edge Computing:** Bereitstellung von HCI an entfernten Standorten oder Edge-Umgebungen für verteilte Rechenanforderungen.
+- **VDI:** Unterstützung von Virtual Desktop Infrastructure (VDI)-Implementierungen für Desktop-Virtualisierung.
+
+&nbsp
+### Beispiele
+
+- **VMware vSAN:** VMwares HCI-Lösung, die sich nahtlos in VMware vSphere für virtualisierte Umgebungen integriert.
+- **Nutanix:** Ein führender Anbieter von HCI-Lösungen, die Software-definierte Infrastrukturlösungen für verschiedene Workloads bieten.
+- **Microsoft Azure Stack HCI:** Microsofts HCI-Angebot, optimiert für Windows Server und Azure-Integration.
+
+### Feedback
+
+Fragen:
+
+- Was ist VDI? Unterschied/Gemeinsamkeit zu VM?
+
+Anmerkung:
+
+- vSan ist Storage, vSphere ist die gesamte HCI Lösung
 
 ## [4/12] [Guttmann] Virtuelle Maschinen
 
@@ -140,7 +229,39 @@ Anmerkung:
 
 - Bilder wären hier gut gewesen
 
-## [5/12] [Böhm]
+## [5/12] [Böhm] GDPR/DSGVO
+
+**Datenschutz-Grundverordnung (DSGVO)**
+
+Die Datenschutz-Grundverordnung (DSGVO) ist eine EU-Verordnung, die darauf abzielt, den Schutz personenbezogener Daten innerhalb der Europäischen Union zu stärken und zu vereinheitlichen.
+
+**Wichtige Punkte:**
+
+1. **Anwendungsbereich:** gilt für alle Unternehmen, die personenbezogene Daten von EU-Bürgern verarbeiten
+    
+2. **Grundsätze der Verarbeitung:** Die Verarbeitung personenbezogener Daten muss auf rechtmäßige, faire und transparente Weiße erfolgen. Es müssen bestimmte Zwecke festgelegt und die Daten auf das erforderliche Minimum beschränkt werden.
+    
+3. **Rechte der betroffenen Personen:** stärkt die Rechte der Einzelpersonen in Bezug auf ihre personenbezogenen Daten, einschließlich des Rechts auf Zugang, Berichtigung, Löschung und Widerspruch.
+    
+4. **Privacy by Design und Privacy by Default:** Unternehmen müssen von Anfang an Datenschutz in ihre Produkte und Dienstleistungen integrieren.
+    
+5. **Meldepflicht bei Datenschutzverletzungen:** Datenschutzverletzungen müssen innerhalb von 72 Stunden an die zuständige Aufsichtsbehörde gemeldet werden, es sei denn, die Verletzung ist ein geringes Risiko für die Rechte und Freiheiten von Einzelpersonen oder bereits angemessene technische und organisatorische Schutzmaßnahmen wurden ergriffen
+    
+6. **Sanktionen:** Bei Verstößen können Geldstrafen von bis zu 20 Millionen Euro oder bis zu 4% des weltweiten Jahresumsatzes des vorangegangenen Geschäftsjahres verhängt werden, je nachdem, welcher Betrag höher ist.
+
+**Fazit:**
+
+Die DSGVO hat die Art und Weise, wie Unternehmen personenbezogene Daten verarbeiten, grundlegend verändert. Es ist von entscheidender Bedeutung, dass Unternehmen die Bestimmungen der Verordnung einhalten, um sowohl die Rechte der Einzelpersonen als auch ihre eigenen Interessen zu schützen.
+
+### Feedback
+
+Fragen:
+
+- An wen muss in Österreich eine Datenschutzverletzung gemeldet werden?
+
+Anmerkung:
+
+- gut zusammengefasst
 
 ## [6/12] [Platzer] Selected Security Buzzwords of the Cloud
 
