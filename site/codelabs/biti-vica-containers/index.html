@@ -141,8 +141,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="[3/12] [Raab] HCI" duration="0">
-        <p>#HW</p>
-<p>![[traditional-converged-hyperconverged.jpg]]</p>
+        <p class="image-container"><img alt="Container1" src="img/59c9ce87a79eeb14.jpg"></p>
 <h2 is-upgraded>Überblick</h2>
 <p>Hyperkonvergente Infrastruktur (HCI) ist eine softwaredefinierte IT-Infrastruktur, die Compute, Speicher und Netzwerk in ein einziges System integriert. Sie abstrahiert Hardware-Ressourcen und verwaltet sie über Software, um eine hoch skalierbare und flexible Infrastrukturlösung bereitzustellen.</p>
 <p>&amp;nbsp</p>
@@ -385,8 +384,22 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="[9/12] [Kirschner]" duration="0">
-        
+      <google-codelab-step label="[9/12] [Kirschner] Goverance und Compliance" duration="0">
+        <p class="image-container"><img alt="beispiel bild" src="img/7cff88c39d58d053.png"></p>
+<h2 is-upgraded><strong>Goverance</strong></h2>
+<p>umfasst die Entwicklung und Durchsetzung von Richtlinien, Verfahren und Prozessen, um sicherzustellen, dass die IT-Ressourcen eines Unternehmens effektiv und verantwortungsbewusst genutzt werden. <br></p>
+<ul>
+<li>Sicherheit<br> Zugriffskontrollen, Verschlüsselung, Überwachung</li>
+<li>Ressourcenverwaltung<br> Virtuelle Maschinen: Ressourcenskalierung <br></li>
+<li>Audits <br> Regelmäßige Prüfungen um Sicherheitslücken aufzudecken</li>
+</ul>
+<h2 is-upgraded><strong>Compliance</strong> <br></h2>
+<p>bezieht sich auf die Einhaltung externer und interner Vorschriften, Richtlinien und Standards. <br></p>
+<ul>
+<li>Datenschutz<br> Obwohl der Cloud-Anbieter Infrastruktur und Sicherheitsmaßnahmen bereitstellt, bleibt die Verantwortung für die Daten beim Nutzer <br> <br> Das österreichische Datenschutzgesetz (DSG) setzt die Vorgaben der DSGVO um und enthält spezifische nationale Bestimmungen zum Datenschutz <br> <br> Safe-Harbour-Abkommen und EU-US-Datenschutzschild gelten nicht mehr als gültige transantlantischen Datentransfer <br> Herausforderung: Standardvertragsklauseln (Standard Contractual Clauses, SCCs), Verbindliche interne Unternehmensvorschriften (Binding Corporate Rules, BCRs)</li>
+<li>Vertragsgestaltung<br> Schon zu Beginn müssen möglichen Formen der Vertragsbeendigung und der dazugehörigen Transition definiert werden <br> <br> Gesetzliche Vorschriften legen vor wie Daten gespeichert werden dürfen <br> <br> Aufsichtsrechtliche Anforderungen können je nach Branche varieren. Bsp: Banken und Kreditinstitute müssen zusätzliche Bedingungen erfüllen.  <br> Zahlungskartenindustrie: Payment Card Industry Data Security Standard (PCI-DSS)</li>
+</ul>
+
 
       </google-codelab-step>
     
@@ -463,8 +476,81 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="[12/12] [Vedanayagam]" duration="0">
-        
+      <google-codelab-step label="[12/12] [Vedanayagam] Cloud-Init" duration="0">
+        <h2 is-upgraded>Was ist Cloud-Init?</h2>
+<p>Ein Open-Source-Tool zur Konfiguration und Anpassung von Cloud-Instanzen während des ersten Starts. Es automatisiert Aufgaben, die traditionell manuell ausgeführt werden, und vereinfacht so den Bereitstellungsprozess.</p>
+<h2 is-upgraded>Funktionsweise von Cloud-Init:</h2>
+<ol type="1">
+<li><strong>Umgebungserkennung:</strong> Cloud-Init identifiziert die Cloud-Plattform auf der die Instanz läuft.</li>
+<li><strong>Metadatenabruf:</strong> Es ruft vom Cloud-Anbieter bereitgestellte Metadaten ab, einschließlich Netzwerkeinstellungen und Benutzeranmeldeinformationen.</li>
+<li><strong>Systemkonfiguration:</strong> Basierend auf den abgerufenen Daten und den vom Benutzer bereitgestellten Konfigurationen führt Cloud-Init Aktionen wie:<ul>
+<li>Hostnamen festlegen</li>
+<li>Netzwerkschnittstellen konfigurieren</li>
+<li>Benutzer und Gruppen hinzufügen</li>
+<li>Pakete installieren</li>
+<li>Benutzerdefinierte Skripte ausführen</li>
+</ul>
+</li>
+</ol>
+<h2 is-upgraded>Verwendung von Cloud-Init:</h2>
+<p>Verwendet Cloud-Config-Dateien im YAML-Format, um die gewünschten Konfigurationen zu definieren. Diese Dateien können während des Starts der Instanz an den Cloud-Anbieter hochgeladen oder direkt in die Instanz injiziert werden.</p>
+<h2 is-upgraded>Cloud-Init in der Cloud:</h2>
+<ul>
+<li><strong>Konsistenz und Skalierbarkeit:</strong> Ermöglicht die konsistente Konfiguration und Skalierung von Cloud-Instanzen, was für große und dynamische Cloud-Umgebungen entscheidend ist.</li>
+<li><strong>Automatisierte Updates:</strong> Kann verwendet werden, um Softwarepakete und Systemkonfigurationen automatisch zu aktualisieren, wodurch die Sicherheit und Stabilität von Cloud-Instanzen gewährleistet wird.</li>
+<li><strong>Hybrid-Cloud-Unterstützung:</strong> Sowohl in öffentlichen als auch in privaten Clouds eingesetzt werden und ermöglicht so die Verwaltung von Hybrid-Cloud-Umgebungen.</li>
+</ul>
+<h2 is-upgraded>Cloud-Init auf verschiedenen Plattformen</h2>
+<h3 is-upgraded>Amazon Web Services (AWS)</h3>
+<p>Unterstützt die Anpassung von EC2-Instanzen während des Starts. Verwendungszwecke für Cloud-Init:</p>
+<ul>
+<li>SSH-Schlüssel einzurichten</li>
+<li>Software-Pakete zu installieren und zu konfigurieren</li>
+<li>EC2-Instanz-Metadaten abzurufen und zu verwenden</li>
+<li>Benutzerdefinierte Skripte auszuführen</li>
+</ul>
+<p>AWS stellt benutzerdefinierte AMIs (Amazon Machine Images) zur Verfügung, die Cloud-Init enthalten, um eine nahtlose Integration zu ermöglichen.</p>
+<h3 is-upgraded>Google Cloud Platform (GCP)</h3>
+<p>Instanzinitialisierung von Compute Engine-VMs verwendet und ermöglicht:</p>
+<ul>
+<li>Abruf von Metadaten aus der Google-Metadaten-API</li>
+<li>Konfiguration von Netzwerkeinstellungen</li>
+<li>Installation und Konfiguration von Softwarepaketen</li>
+<li>Ausführung von benutzerdefinierten Skripten während des ersten Starts</li>
+</ul>
+<p>GCP bietet Startskripte und benutzerdefinierte Images an, die Cloud-Init unterstützen.</p>
+<h3 is-upgraded>Microsoft Azure</h3>
+<p>Verwaltung und Konfiguration von Linux-VMs und mit Cloud Init kann man:</p>
+<ul>
+<li>Azure-spezifische Metadaten abrufen</li>
+<li>Netzwerkschnittstellen konfigurieren</li>
+<li>SSH-Schlüssel und andere Benutzeranmeldeinformationen einrichten</li>
+<li>Software-Pakete installieren und konfigurieren</li>
+</ul>
+<p>Azure bietet vorkonfigurierte Images mit Cloud-Init-Unterstützung, um die nahtlose Integration und Verwaltung von VM-Instanzen zu erleichtern.</p>
+<h2 is-upgraded>Abbildung Cloud-Init</h2>
+<p class="image-container"><img alt="Cloud-Init Architektur" src="img/ac2dcdf03f287e9e.png"></p>
+<h2 is-upgraded>Vorteile von Cloud-Init:</h2>
+<ul>
+<li><strong>Automatisierung:</strong> Vereinfacht die anfängliche Einrichtung des Servers und eliminiert repetitive Aufgaben.</li>
+<li><strong>Konsistenz:</strong> Stellt sicher, dass alle Instanzen mit derselben Konfiguration bereitgestellt werden.</li>
+<li><strong>Flexibilität:</strong> Unterstützt verschiedene Cloud-Plattformen und Konfigurationsoptionen über Cloud-Config-Dateien.</li>
+<li><strong>Sicherheit:</strong> Ermöglicht ein sicheres Bootstrapping durch Injektion von SSH-Schlüsseln während des Starts.</li>
+</ul>
+<h2 is-upgraded>Nachteile von Cloud-Init:</h2>
+<ul>
+<li><strong>Eingeschränkte Fehlerdiagnose:</strong> Fehler in Cloud-Init-Konfigurationen können schwer zu diagnostizieren sein, da die Protokollierung und Fehlermeldungen nicht immer klar oder ausführlich genug sind.</li>
+<li><strong>Anbieterabhängigkeit:</strong> Cloud-Init ist abhängig von den Metadaten und Diensten des Cloud-Anbieters, was zu einer gewissen Anbieterbindung führen kann.</li>
+<li><strong>Updates und Wartung:</strong> Die Wartung und Aktualisierung von Cloud-Init-Konfigurationen kann aufwendig sein, insbesondere wenn sich die Anforderungen ändern oder neue Versionen von Cloud-Init veröffentlicht werden.</li>
+</ul>
+<h2 is-upgraded>Cloud-Init vs. Andere Tools:</h2>
+<ul>
+<li><strong>Chef:</strong> Chef ist ein Configuration-Management-Tool, welches komplexer als Cloud-Init und erfordert mehr Konfiguration und Know-how.</li>
+<li><strong>Ansible:</strong> Ansible ist benutzerfreundlicher als Chef, aber nicht so ausgereift wie Cloud-Init für die Cloud-Initialisierung.</li>
+</ul>
+<h2 is-upgraded>Fazit:</h2>
+<p>Cloud-Init hat sich als unverzichtbares Tool für die <strong>Automatisierung</strong> und <strong>Verwaltung</strong> von Cloud-Instanzen etabliert. Es trägt maßgeblich zur <strong>Effizienz</strong> und <strong>Skalierbarkeit</strong> in Cloud-Umgebungen bei und wird als Standardlösung für die Cloud-Initialisierung angesehen.</p>
+
 
       </google-codelab-step>
     
