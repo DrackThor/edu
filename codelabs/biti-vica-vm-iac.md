@@ -516,7 +516,7 @@ Die Virtualisierung von Anwendungen kann zu Leistungsproblemen führen, insbeson
 Die Umstellung auf virtuelle Umgebungen erfordert oft Anpassungen und Optimierungen, um sicherzustellen, dass die Anwendungen reibungslos funktionieren.
 Eine umfassende Testphase vor der Implementierung kann dabei helfen, potenzielle Leistungsprobleme frühzeitig zu identifizieren und zu beheben.
 
-## [12/12] SAN (NAS) [Vedanayagam]
+## [12/12] NAS [Vedanayagam]
 
 ![alt text](./img/NAS_icon-1.png)
 
@@ -571,6 +571,67 @@ Ein NAS bietet eine vielseitige und effiziente Speicherlösung für Privathausha
 
 Zusätzlich bietet Cloud-NAS den Vorteil des Zugriffs von überall aus, ohne zusätzlichen Platzbedarf und mit flexibler Skalierbarkeit, was es zu einer attraktiven Option für Organisationen macht, die nach einer kosteneffektiven und benutzerfreundlichen Lösung für die Datenspeicherung suchen.
 
+## [12/12] SAN [Vedanayagam]
+
+### Was ist ein Storage Area Network (SAN)?
+
+Ein Storage Area Network (SAN) ist ein dediziertes Netzwerk, das den Zugriff auf gemeinsam genutzte Speichergeräte ermöglicht. SANs werden häufig in Rechenzentren eingesetzt, um den Speicherzugriff für Server zu zentralisieren und die Skalierbarkeit sowie die Leistung zu verbessern.
+
+### Kernmerkmale von SAN:
+
+- **Block-Level-Zugriff:** SANs bieten blockbasierten Zugriff auf Speichergeräte, was eine schnelle und effiziente Datenübertragung ermöglicht.
+- **Hohe Verfügbarkeit:** Durch redundante Komponenten und failover-Mechanismen gewährleistet ein SAN eine hohe Verfügbarkeit von Daten.
+- **Skalierbarkeit:** SANs können leicht skaliert werden, um wachsende Speicheranforderungen zu erfüllen, ohne die Performance zu beeinträchtigen.
+
+### Cloud-Integration mit SAN:
+
+Mit der zunehmenden Verbreitung von Cloud-Technologien wird die Integration von SANs in Cloud-Umgebungen immer wichtiger. Hier sind einige Aspekte der Cloud-Integration für SANs:
+
+- **Hybrid Cloud-SAN:** Unternehmen können hybride SAN-Lösungen implementieren, die lokale SAN-Ressourcen mit Cloud-Speicher verbinden, um Flexibilität und Skalierbarkeit zu maximieren.
+- **Datenreplikation und Disaster Recovery:** Durch die Integration von SANs mit Cloud-Speicher können Unternehmen Daten einfach replizieren und für Disaster-Recovery-Szenarien in der Cloud sichern.
+- **Elastischer Speicher:** Cloud-SAN-Integration ermöglicht es Unternehmen, bei Bedarf zusätzlichen Speicher in der Cloud bereitzustellen und flexibel zu skalieren, ohne teure lokale Hardware zu erwerben.
+- **Globaler Zugriff:** Cloud-SANs bieten einen globalen Zugriff auf Daten, was es Unternehmen ermöglicht, verteilte Teams effizient zu unterstützen und den Zugriff auf gemeinsame Daten über verschiedene Standorte hinweg zu vereinfachen.
+
+### Vorteile
+- **Hohe Leistung:** SANs bieten eine hohe Leistung für datenintensive Anwendungen und Workloads.
+- **Skalierbarkeit:** SANs können einfach skaliert werden, um den wachsenden Speicherbedarf zu erfüllen.
+- **Zuverlässigkeit:** SANs sind auf hohe Verfügbarkeit und Datenintegrität ausgelegt.
+- **Zentrale Verwaltung:** Durch die zentrale Verwaltung des Speichers können Administratoren Ressourcen effizient verwalten und überwachen.
+- **Flexibilität:** SANs unterstützen verschiedene Serverplattformen und Betriebssysteme, was Flexibilität in der Infrastruktur bietet.
+
+### Nachteile
+
+- **Kosten:** Die Anschaffungs- und Betriebskosten eines SANs können hoch sein, insbesondere für kleinere Unternehmen oder Organisationen mit begrenzten Budgets.
+- **Abhängigkeit von Netzwerkinfrastruktur:** Die Leistung eines SANs kann durch die Qualität und Kapazität der Netzwerkinfrastruktur beeinflusst werden.
+- **Single Point of Failure:** Ein Ausfall oder eine Störung im SAN kann zu einem Ausfall des gesamten Speichersystems führen, wenn keine ausreichenden Redundanzmechanismen vorhanden sind.
+
+### Anwendungsfälle
+
+- **Datenbanken:** Microsoft SQL Server und Oracle Datenbanken
+
+- **Virtualisierung:** VMware, KVM oder Microsoft Hyper-V und Virtual Desktop Infrastructures (VDIs)
+
+- **Umgebungen:** SAP bzw. andere Enterprise Resource Planning (ERP) und Customer Resource Management
+
+### Beliebte SAN-Marken
+
+- **Dell EMC:** Bekannt für seine breite Palette von SAN-Lösungen für Unternehmen jeder Größe.
+- **HPE: (Hewlett Packard Enterprise):** Bietet umfassende SAN-Produkte und -Lösungen für anspruchsvolle Unternehmensumgebungen.
+- **IBM:** Bekannt für seine zuverlässigen und leistungsstarken SAN-Systeme, die eine skalierbare und flexible Speicherinfrastruktur bieten.
+- **NetApp:** Spezialisiert auf SAN-Lösungen mit Fokus auf Datenmanagement und -effizienz.
+- **Cisco:** Bietet SAN-Switches und Infrastrukturkomponenten für die Integration von SANs in Unternehmensnetzwerke.
+
+### Abbildung SAN
+
+![SAN Abbildung](./img/storage-san_diagram-f_mobile.png)
+
+### SAN VS NAS
+
+![SAN VS NAS](./img/san-vs-nas.png)
+
+### Fazit:
+
+Storage Area Networks sind entscheidend für die Speicherinfrastruktur von Unternehmen und spielen eine wichtige Rolle in der Cloud-Integration. Durch die Kombination von SANs mit Cloud-Technologien können Unternehmen Flexibilität, Skalierbarkeit und Verfügbarkeit maximieren, um den sich ständig ändernden Anforderungen des digitalen Zeitalters gerecht zu werden.
 
 
 ## Infrastructure-as-Code: Basics
