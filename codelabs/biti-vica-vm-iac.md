@@ -788,10 +788,28 @@ terraform destroy
 
 ## Assignment #2 Topics
 
-One one-pager per term should be created from the following topics and presented in the next classroom session (max. 5
-min).
+- Create a brief but complete summary of one of the topics found below.
+- Present your topic in class next time, with a maximum duration of 5 minutes.
+- format: markdown
+  - [introduction to markdown](https://www.markdownguide.org/getting-started/#:~:text=Markdown%20is%20a%20lightweight%20markup,than%20using%20a%20WYSIWYG%20editor)
+  - [markdown tutorial](https://daringfireball.net/projects/markdown/basics)
+  - [markdown tutorial video](https://youtu.be/bTVIMt3XllM?si=d4Vn_alZqPAYzzGY)
+- Create a pull request with the content under your assigned headline in this document.
+  - branchname: abgabe-<1/2>-<Nachname>; zB "abgabe-1-drack"
+  - [Github PR docu](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+  - [PR tutorial video](https://youtu.be/jRLGobWwA3Y?si=_lUhrRWYh8sLjZbO)
+  - [GitHub create account docu](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github)
+  - [Git Tutorial](https://www.w3schools.com/git/)
+- Questions? eMail me asap.
 
-Format: AsciiDoc or Markdown. Upload as zip file incl. any additional files (images etc.)
+**assessment criteria:**
+
+- deadline: 25% - submitted in time?
+- content: 25% - well written and complete?
+- visualization: 25% - sources, pictures, examples?
+- presentation: 25% - convincingly presented or simply read off 
+
+**topics:**
 
 - IaC - Overview
 - Terraform
