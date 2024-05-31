@@ -1,5 +1,8 @@
 name: builder
 
+permissions:
+  pull-requests: write
+
 on:
   push:
     branches:
@@ -57,3 +60,30 @@ jobs:
           branch: production # The branch the action should deploy to.
           folder: ./site/dist # The folder the action should deploy.
           target-folder: /
+
+      - name: Install Netlify
+        if: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/release-*' }}
+        run: npm install netlify-cli@17.10.1 -g
+
+      - name: Deploy to Netlify
+        if: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/release-*' }}
+        id: netlify_deploy
+        run: |
+          netlify deploy \
+            --dir ./site/dist \
+            --site ${{ secrets.NETLIFY_SITE_ID }} \
+            --auth ${{ secrets.NETLIFY_API_TOKEN }} \
+            --json \
+            > deploy_output.json
+
+      - name: Generate URL Preview
+        id: url_preview
+        if: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/release-*' }}
+        run: |
+          NETLIFY_PREVIEW_URL=$(jq -r '.deploy_url' deploy_output.json)
+          echo "NETLIFY_PREVIEW_URL=$NETLIFY_PREVIEW_URL" >> "$GITHUB_OUTPUT"
+
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            Preview URL: ${{ steps.url_preview.outputs.NETLIFY_PREVIEW_URL }}
