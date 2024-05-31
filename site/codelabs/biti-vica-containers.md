@@ -3,7 +3,7 @@ id: biti-vica-containers
 categories: linux, virtualization, containers
 tags: biti, vica, containers
 status: Published
-authors: Daniel Drack
+authors: Daniel Drack, BSc MA MBA
 
 # BITI VICA - Containers
 
