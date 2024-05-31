@@ -1,4 +1,4 @@
-name: builder
+name: build-edu-website
 
 permissions:
   pull-requests: write
