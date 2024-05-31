@@ -1,6 +1,8 @@
 # DrackThor edu
 
-https://www.raulmelo.me/en/blog/deploying-netlify-github-actions-guide
+DrackThor edu page for FH courses etc.
 
-deploy production to gh pages
-deploy previews to netlify
+- deploys "production" branch to GitHub pages: https://edu.drackthor.me
+- deploys preview envs to netlify, see URL in PR
+
+If you want to add code changes, create a PR!
