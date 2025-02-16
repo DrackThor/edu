@@ -1,0 +1,58 @@
+site_name: DrackThor Edu
+site_url: http://localhost
+theme:
+  name: material
+  features:
+    - navigation.footer
+  # favicon: assets/favicon.png
+  font:
+    text: Merriweather Sans
+    code: Anonymous Pro
+  icon:
+    logo: material/school
+  palette:
+  # Dark Mode
+  - scheme: slate
+    toggle:
+      icon: material/weather-sunny
+      name: dark mode
+    primary: green
+    accent: deep purple
+  # Light Mode
+  - scheme: default
+    toggle:
+      icon: material/weather-night
+      name: light mode
+    primary: blue
+    accent: deep yellow
+markdown_extensions:
+  # emojis
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  # code highlighting
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  # tabs
+  - pymdownx.tabbed:
+      alternate_style: true
+  # admonitions
+  - admonition
+  - pymdownx.details
+  # annotations
+  - md_in_html
+
+extra:
+  social:
+    - icon: material/web
+      link: https://drackthor.me
+    - icon: material/linkedin
+      link: https://linkedin.com/in/drackthor
+
+copyright: Copyright &copy; 2025 Daniel Drack

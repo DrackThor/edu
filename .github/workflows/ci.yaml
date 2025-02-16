@@ -1,0 +1,39 @@
+name: build-edu-website
+
+permissions:
+  pull-requests: write
+  contents: write
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'release-*'
+
+  pull_request:
+    branches:
+      - 'main'
+      - 'release-*'
+
+defaults:
+  run:
+    shell: bash
+jobs:
+  prepare_ci_run:
+    name: Build Website
+    # Prepare CI Run looks at what has been changed in this commit/PR/... and determines which artifacts should be
+    # built afterwards (in other jobs that depend on this one).
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # need to checkout "all commits" for certain features to work (e.g., get all changed files)
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - name: Build CodeLabs
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force
