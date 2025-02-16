@@ -1,19 +1,18 @@
-# Welcome to MkDocs
+# DrackThor Edu Courses
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+!!! note "Educational Courses by DrackThor"
 
-## Commands
+    These are courses I teach in person.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+<div class="grid cards" markdown>
 
-## Project layout
+-   :cloud:{ .lg .middle } __Virtualization & Cloud Technologies__
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+    ---
 
-I like to drink :beers:
+    UAS Burgenland: Bachelor IT Infrastructure Management  
+    Semester 4
+
+    [:octicons-arrow-right-24: Getting started](BITI_VICA_SS25/virtualization_basics/index.md)
+
+</div>

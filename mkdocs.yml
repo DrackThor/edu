@@ -1,9 +1,27 @@
 site_name: DrackThor Edu
 site_url: http://localhost
+nav:
+  - Home: index.md
+  - BITI VICA SS25:
+    - Virtualization Basics:
+      - BITI_VICA_SS25/virtualization_basics/index.md
+      - Overview: BITI_VICA_SS25/virtualization_basics/virtualization-0.md
+    - Infrastructure as Code:
+      - BITI_VICA_SS25/iac_basics/index.md
+      - Overview: BITI_VICA_SS25/iac_basics/iac-0.md
+    - Container Basics:
+      - BITI_VICA_SS25/container_basics/index.md
+      - Overview: BITI_VICA_SS25/container_basics/containers-0.md
+    - Further Reading: BITI_VICA_SS25/further-reading.md
+
 theme:
   name: material
   features:
     - navigation.footer
+    # - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
   # favicon: assets/favicon.png
   font:
     text: Merriweather Sans
