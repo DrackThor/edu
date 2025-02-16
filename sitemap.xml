@@ -5,19 +5,31 @@
          <lastmod>2025-02-16</lastmod>
     </url>
     <url>
-         <loc>http://localhost/BITI%20VICA%20SS25/further-reading/</loc>
+         <loc>http://localhost/BITI_VICA_SS25/further-reading/</loc>
          <lastmod>2025-02-16</lastmod>
     </url>
     <url>
-         <loc>http://localhost/BITI%20VICA%20SS25/Container%20Basics/2-biti-vica-containers/</loc>
+         <loc>http://localhost/BITI_VICA_SS25/container_basics/</loc>
          <lastmod>2025-02-16</lastmod>
     </url>
     <url>
-         <loc>http://localhost/BITI%20VICA%20SS25/IaC%20Basics/1-biti-vica-vm-iac/</loc>
+         <loc>http://localhost/BITI_VICA_SS25/container_basics/containers-0/</loc>
          <lastmod>2025-02-16</lastmod>
     </url>
     <url>
-         <loc>http://localhost/BITI%20VICA%20SS25/Virtualization%20Basics/0-biti-vica-virtualization/</loc>
+         <loc>http://localhost/BITI_VICA_SS25/iac_basics/</loc>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost/BITI_VICA_SS25/iac_basics/iac-0/</loc>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost/BITI_VICA_SS25/virtualization_basics/</loc>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost/BITI_VICA_SS25/virtualization_basics/virtualization-0/</loc>
          <lastmod>2025-02-16</lastmod>
     </url>
     <url>
