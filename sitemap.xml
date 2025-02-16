@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>http://localhost/</loc>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost/biti-vica-containers/</loc>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost/biti-vica-virtualization/</loc>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost/biti-vica-vm-iac/</loc>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost/examples/admonition/</loc>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost/examples/tabs/</loc>
+         <lastmod>2025-02-16</lastmod>
+    </url>
+</urlset>
